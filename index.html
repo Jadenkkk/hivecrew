@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HIVE Studio — Creative Marketing Collective</title>
-  <meta name="description" content="HIVE Studio connects Southeast Asian brands with Korea's leading creative crew. Reels, brand films, and live activations." />
+  <title>HIVE Studio — Creative Marketing Collective, Seoul</title>
+  <meta name="description" content="HIVE Studio connects Southeast Asian brands with Korea's leading creative crew." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ink:     #0d0d0d;
-      --white:   #ffffff;
-      --cream:   #f8f6f1;
-      --sand:    #ede9e0;
-      --gold:    #b8965a;
-      --gold-lt: #d4b07a;
-      --muted:   #888880;
-      --border:  #e2ddd4;
-      --serif:   'Playfair Display', Georgia, serif;
-      --sans:    'Inter', -apple-system, sans-serif;
+      --ink:    #111110;
+      --white:  #ffffff;
+      --off:    #f7f5f1;
+      --warm:   #edeae3;
+      --border: #dedad2;
+      --muted:  #8c897f;
+      --gold:   #b09060;
+      --sans:   'Inter', system-ui, sans-serif;
+      --serif:  'Cormorant Garamond', Georgia, serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -33,350 +32,288 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ─────────── NAV ─────────── */
+    /* ── NAV ── */
     nav {
-      position: fixed; inset-block-start: 0; left: 0; right: 0; z-index: 200;
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      align-items: center;
-      padding: 0 52px;
-      height: 72px;
-      background: rgba(255,255,255,0.85);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0 60px; height: 68px;
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid transparent;
-      transition: border-color .4s, background .4s;
+      transition: border-color .3s;
     }
-    nav.scrolled {
-      background: rgba(255,255,255,0.96);
-      border-bottom-color: var(--border);
-    }
-
-    .nav-left { display: flex; gap: 32px; }
-    .nav-left a, .nav-right-links a {
-      font-size: 11.5px; font-weight: 500;
-      letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--muted); text-decoration: none;
-      transition: color .2s;
-    }
-    .nav-left a:hover, .nav-right-links a:hover { color: var(--ink); }
+    nav.scrolled { border-bottom-color: var(--border); }
 
     .nav-logo {
-      text-align: center; text-decoration: none;
-      font-family: var(--serif); font-size: 20px; font-weight: 900;
-      color: var(--ink); letter-spacing: 0.06em;
+      font-family: var(--serif); font-size: 22px; font-weight: 700;
+      letter-spacing: 0.04em; color: var(--ink); text-decoration: none;
     }
-    .nav-logo span { color: var(--gold); }
+    .nav-logo i { color: var(--gold); font-style: normal; }
 
-    .nav-right-links {
-      display: flex; justify-content: flex-end;
-      align-items: center; gap: 32px;
+    .nav-links { display: flex; align-items: center; gap: 36px; }
+    .nav-links a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color .2s;
     }
+    .nav-links a:hover { color: var(--ink); }
 
-    /* Language toggle */
-    .lang-switch {
-      display: flex; align-items: center; gap: 4px;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 3px 4px;
+    .lang-pill {
+      display: flex; background: var(--off);
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 3px;
     }
     .lang-btn {
-      font-family: var(--sans);
-      font-size: 10.5px; font-weight: 600;
+      font-family: var(--sans); font-size: 10.5px; font-weight: 600;
       letter-spacing: 0.08em; text-transform: uppercase;
-      border: none; background: transparent;
-      color: var(--muted);
-      padding: 5px 14px; border-radius: 100px;
-      cursor: pointer;
-      transition: background .25s, color .25s;
+      border: none; background: transparent; color: var(--muted);
+      padding: 5px 15px; border-radius: 100px; cursor: pointer;
+      transition: all .22s;
     }
-    .lang-btn.active {
-      background: var(--ink);
-      color: var(--white);
-    }
+    .lang-btn.active { background: var(--ink); color: var(--white); }
 
-    /* ─────────── HERO ─────────── */
+    /* ── HERO ── */
     .hero {
-      min-height: 100vh;
-      background: var(--ink);
-      display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 140px 52px 80px;
+      padding: 180px 60px 120px;
+      background: var(--white);
       position: relative; overflow: hidden;
     }
 
-    /* subtle texture */
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.018'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      pointer-events: none;
+    .hero-label {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 52px;
     }
-
-    .hero-content {
-      display: flex; flex-direction: column;
-      justify-content: center;
-      max-width: 780px; position: relative;
+    .hero-label span {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
     }
-
-    .hero-kicker {
-      display: inline-flex; align-items: center; gap: 10px;
-      margin-bottom: 44px; width: fit-content;
+    .hero-label::before, .hero-label::after {
+      content: ''; flex: 0 0 30px; height: 1px; background: var(--gold);
     }
-    .hero-kicker-line {
-      width: 32px; height: 1px; background: var(--gold);
-    }
-    .hero-kicker span {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--gold-lt);
-    }
+    .hero-label::after { flex: 0 0 30px; }
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(56px, 8.5vw, 110px);
-      font-weight: 900; line-height: 1.0;
-      color: var(--white); letter-spacing: -0.01em;
-      margin-bottom: 36px;
+      font-size: clamp(68px, 10.5vw, 148px);
+      font-weight: 700; line-height: 0.92;
+      letter-spacing: -0.015em; color: var(--ink);
+      margin-bottom: 52px;
     }
-    .hero-title em {
-      font-style: italic; color: var(--gold);
-    }
+    .hero-title em { font-style: italic; color: var(--gold); }
 
-    .hero-body {
-      font-size: 16px; font-weight: 300; line-height: 1.85;
-      color: rgba(255,255,255,0.45);
-      max-width: 460px; margin-bottom: 56px;
+    .hero-bottom {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; gap: 60px;
     }
-
-    .hero-cta { display: flex; align-items: center; gap: 16px; }
+    .hero-sub {
+      font-size: 16px; font-weight: 300; line-height: 1.8;
+      color: var(--muted); max-width: 380px;
+    }
+    .hero-actions { display: flex; gap: 12px; flex-shrink: 0; }
 
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
-      font-family: var(--sans); font-size: 12px; font-weight: 600;
+      font-family: var(--sans); font-size: 11.5px; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase;
-      text-decoration: none; border-radius: 2px;
-      padding: 15px 36px;
-      transition: all .25s;
+      text-decoration: none; padding: 14px 32px;
+      border-radius: 1px; transition: all .22s;
     }
-    .btn-primary {
-      background: var(--gold); color: var(--white);
-      border: 1px solid var(--gold);
+    .btn-dark {
+      background: var(--ink); color: var(--white);
+      border: 1px solid var(--ink);
     }
-    .btn-primary:hover {
-      background: var(--gold-lt); border-color: var(--gold-lt);
-      transform: translateY(-1px);
+    .btn-dark:hover { background: #2a2a28; }
+    .btn-ghost {
+      background: transparent; color: var(--ink);
+      border: 1px solid var(--border);
     }
-    .btn-secondary {
-      background: transparent; color: rgba(255,255,255,0.55);
-      border: 1px solid rgba(255,255,255,0.15);
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* ── TICKER ── */
+    .ticker {
+      overflow: hidden; white-space: nowrap;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0; background: var(--off);
     }
-    .btn-secondary:hover {
-      color: var(--white); border-color: rgba(255,255,255,0.4);
+    .ticker-track {
+      display: inline-flex; gap: 0;
+      animation: tick 22s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex; align-items: center; gap: 20px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted);
+      padding: 0 40px;
+    }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    @keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── SECTIONS ── */
+    .s { padding: 120px 60px; }
+    .s-off  { background: var(--off); }
+    .s-warm { background: var(--warm); }
+    .s-white { background: var(--white); }
+
+    .eyebrow {
+      font-size: 10.5px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 20px; display: block;
     }
 
-    /* Hero bottom bar */
-    .hero-bar {
-      display: flex; align-items: center;
-      border-top: 1px solid rgba(255,255,255,0.07);
-      padding-top: 40px; gap: 64px;
-      position: relative;
-    }
-    .hero-stat { }
-    .hero-stat-n {
+    .h2 {
       font-family: var(--serif);
-      font-size: 30px; font-weight: 700;
-      color: var(--white); letter-spacing: -0.02em;
-      line-height: 1;
+      font-size: clamp(36px, 4.5vw, 62px);
+      font-weight: 700; line-height: 1.05;
+      letter-spacing: -0.01em; color: var(--ink);
     }
-    .hero-stat-n em { color: var(--gold); font-style: normal; }
-    .hero-stat-l {
-      font-size: 10.5px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.28); margin-top: 6px;
-    }
-    .hero-divider {
-      width: 1px; height: 40px;
-      background: rgba(255,255,255,0.1);
-    }
+    .h2 em { font-style: italic; color: var(--gold); }
 
-    /* ─────────── SECTIONS ─────────── */
-    .section { padding: 130px 52px; }
-    .section-cream { background: var(--cream); }
-    .section-sand  { background: var(--sand); }
-    .section-ink   { background: var(--ink); }
-
-    .kicker {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 20px;
-    }
-    .kicker-line { width: 28px; height: 1px; background: var(--gold); }
-    .kicker span {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .title {
-      font-family: var(--serif);
-      font-size: clamp(34px, 4.5vw, 58px);
-      font-weight: 700; line-height: 1.08;
-      letter-spacing: -0.015em; color: var(--ink);
-    }
-    .title.white { color: var(--white); }
-    .title em { font-style: italic; color: var(--gold); }
-
-    .body-text {
-      font-size: 15.5px; font-weight: 300; line-height: 1.9;
+    .lead {
+      font-size: 15px; font-weight: 300; line-height: 1.85;
       color: var(--muted);
     }
-    .body-text.white { color: rgba(255,255,255,0.45); }
 
-    /* ─────────── ABOUT ─────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 5fr 4fr;
-      gap: 100px; align-items: center;
-    }
-
-    .about-text .title { margin-bottom: 28px; }
-    .about-text p {
-      font-size: 15.5px; font-weight: 300; line-height: 1.9;
-      color: var(--muted); margin-bottom: 18px;
-    }
-    .about-text strong { color: var(--ink); font-weight: 600; }
-
-    .about-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 44px; display: flex; flex-direction: column; gap: 36px;
-    }
-    .ac-item { display: flex; gap: 20px; }
-    .ac-icon {
-      width: 40px; height: 40px; flex-shrink: 0;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-    }
-    .ac-label {
-      font-size: 13px; font-weight: 600;
-      color: var(--ink); margin-bottom: 6px; letter-spacing: 0.01em;
-    }
-    .ac-desc {
-      font-size: 13px; font-weight: 300; line-height: 1.7; color: var(--muted);
-    }
-
-    /* ─────────── SERVICES ─────────── */
-    .services-header {
-      display: flex; justify-content: space-between;
-      align-items: flex-end; margin-bottom: 64px;
-      gap: 40px;
-    }
-    .services-header .body-text { max-width: 380px; margin-top: 20px; }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--border);
-    }
-    .svc {
-      padding: 52px 44px;
-      border-right: 1px solid var(--border);
-      position: relative; overflow: hidden;
-      transition: background .35s;
-    }
-    .svc:last-child { border-right: none; }
-    .svc::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0;
-      width: 0; height: 2px;
-      background: var(--gold);
-      transition: width .4s ease;
-    }
-    .svc:hover { background: var(--white); }
-    .svc:hover::after { width: 100%; }
-
-    .svc-num {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.18em; color: var(--gold);
-      margin-bottom: 36px; display: block;
-    }
-    .svc-icon { font-size: 24px; margin-bottom: 20px; display: block; }
-    .svc-title {
-      font-family: var(--serif);
-      font-size: 22px; font-weight: 700; line-height: 1.2;
-      color: var(--ink); margin-bottom: 16px;
-    }
-    .svc-desc {
-      font-size: 13.5px; font-weight: 300; line-height: 1.8; color: var(--muted);
-    }
-
-    /* ─────────── WHY ─────────── */
-    .why-grid {
+    /* ── ABOUT ── */
+    .about-layout {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 100px; align-items: start;
     }
-    .why-left .title { margin-bottom: 56px; }
+    .about-left .h2 { margin-bottom: 28px; }
+    .about-left .lead { margin-bottom: 48px; }
 
-    .why-items { display: flex; flex-direction: column; }
-    .why-item {
-      display: grid; grid-template-columns: 28px 1fr;
-      gap: 24px; padding: 28px 0;
-      border-top: 1px solid rgba(255,255,255,0.07);
+    .about-pillars {
+      display: flex; flex-direction: column; gap: 0;
+      border-top: 1px solid var(--border);
     }
-    .why-items .why-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .pillar {
+      display: grid; grid-template-columns: 36px 1fr;
+      gap: 20px; padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .pillar-icon { font-size: 18px; padding-top: 2px; }
+    .pillar-name {
+      font-size: 13px; font-weight: 600; color: var(--ink);
+      margin-bottom: 5px; letter-spacing: 0.01em;
+    }
+    .pillar-desc {
+      font-size: 12.5px; font-weight: 300; line-height: 1.7; color: var(--muted);
+    }
+
+    /* about right — big number block */
+    .about-right {
+      display: flex; flex-direction: column; gap: 2px; margin-top: 84px;
+    }
+    .stat-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 36px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .stat-block.gold-bg { background: var(--gold); border-color: var(--gold); }
+    .stat-n {
+      font-family: var(--serif);
+      font-size: 48px; font-weight: 700; line-height: 1;
+      color: var(--ink); letter-spacing: -0.02em;
+    }
+    .stat-block.gold-bg .stat-n { color: var(--white); }
+    .stat-l {
+      font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); text-align: right;
+    }
+    .stat-block.gold-bg .stat-l { color: rgba(255,255,255,0.7); }
+
+    /* ── SERVICES ── */
+    .services-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 60px; gap: 60px;
+    }
+    .services-top .lead { max-width: 320px; margin-top: 20px; }
+
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .svc {
+      background: var(--white);
+      padding: 52px 44px; position: relative;
+      border-bottom: 3px solid transparent;
+      transition: border-color .3s;
+    }
+    .svc:hover { border-color: var(--gold); }
+    .svc-n {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 40px;
+    }
+    .svc-ico { font-size: 26px; display: block; margin-bottom: 20px; }
+    .svc-title {
+      font-family: var(--serif);
+      font-size: 24px; font-weight: 700; line-height: 1.2;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .svc-body {
+      font-size: 13px; font-weight: 300; line-height: 1.85; color: var(--muted);
+    }
+
+    /* ── WHY ── */
+    .why-layout {
+      display: grid; grid-template-columns: 5fr 4fr;
+      gap: 100px; align-items: start;
+    }
+    .why-list { border-top: 1px solid var(--border); margin-top: 44px; }
+    .why-row {
+      display: grid; grid-template-columns: 20px 1fr;
+      gap: 28px; padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
     .why-n {
-      font-size: 11px; font-weight: 600;
-      color: var(--gold); letter-spacing: 0.05em; padding-top: 2px;
+      font-size: 10.5px; font-weight: 600; color: var(--gold);
+      letter-spacing: 0.06em; padding-top: 2px;
     }
-    .why-title {
-      font-size: 15px; font-weight: 500; color: var(--white);
+    .why-t {
+      font-size: 14px; font-weight: 600; color: var(--ink);
       margin-bottom: 8px;
     }
-    .why-desc {
-      font-size: 13px; font-weight: 300; line-height: 1.75;
-      color: rgba(255,255,255,0.35);
+    .why-d {
+      font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--muted);
     }
 
-    .why-quote-card {
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 52px; position: sticky; top: 120px;
+    .why-right { margin-top: 84px; }
+    .quote-block {
+      border: 1px solid var(--border);
+      padding: 52px;
     }
-    .wqc-mark {
-      font-family: var(--serif); font-size: 64px;
-      color: var(--gold); line-height: 0.7;
-      margin-bottom: 28px; display: block;
+    .q-mark {
+      font-family: var(--serif); font-size: 72px;
+      font-weight: 700; color: var(--gold); line-height: 0.6;
+      display: block; margin-bottom: 24px;
     }
-    .wqc-text {
-      font-family: var(--serif); font-size: 20px;
-      font-style: italic; line-height: 1.6;
-      color: rgba(255,255,255,0.7); margin-bottom: 44px;
+    .q-text {
+      font-family: var(--serif); font-size: 22px;
+      font-style: italic; font-weight: 400; line-height: 1.6;
+      color: var(--ink); margin-bottom: 48px;
     }
-    .wqc-stats {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    .q-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .qs {
+      padding-top: 20px; border-top: 1px solid var(--border);
     }
-    .wqs {
-      padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.07);
+    .qs-n {
+      font-family: var(--serif); font-size: 28px; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.01em;
     }
-    .wqs-n {
-      font-family: var(--serif);
-      font-size: 26px; font-weight: 700;
-      color: var(--white); letter-spacing: -0.01em;
-    }
-    .wqs-n em { color: var(--gold); font-style: normal; }
-    .wqs-l {
-      font-size: 10.5px; font-weight: 500;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: rgba(255,255,255,0.28); margin-top: 5px;
+    .qs-n em { color: var(--gold); font-style: normal; }
+    .qs-l {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--muted); margin-top: 4px;
     }
 
-    /* ─────────── PROCESS ─────────── */
+    /* ── PROCESS ── */
     .process-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; margin-top: 64px;
-      border: 1px solid var(--border);
+      margin-top: 60px; border: 1px solid var(--border);
     }
     .step {
       padding: 44px 36px;
@@ -385,455 +322,441 @@
     }
     .step:last-child { border-right: none; }
     .step-n {
-      font-size: 10.5px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--gold); margin-bottom: 28px; display: block;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-bottom: 28px;
     }
-    .step-title {
-      font-family: var(--serif);
-      font-size: 18px; font-weight: 700;
+    .step-t {
+      font-family: var(--serif); font-size: 20px; font-weight: 700;
       color: var(--ink); margin-bottom: 12px;
     }
-    .step-desc {
-      font-size: 13px; font-weight: 300;
-      line-height: 1.8; color: var(--muted);
+    .step-d {
+      font-size: 12.5px; font-weight: 300; line-height: 1.8; color: var(--muted);
     }
-    .step-arrow {
-      position: absolute; top: 44px; right: -10px;
-      width: 20px; height: 20px;
-      background: var(--sand); border: 1px solid var(--border);
-      border-radius: 50%;
+    .step-arr {
+      position: absolute; right: -11px; top: 44px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--white); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       font-size: 9px; color: var(--muted); z-index: 1;
     }
-    .step:last-child .step-arrow { display: none; }
+    .step:last-child .step-arr { display: none; }
 
-    /* ─────────── CTA ─────────── */
-    .cta-section {
-      background: var(--ink);
-      padding: 160px 52px;
-      text-align: center; position: relative; overflow: hidden;
+    /* ── CTA ── */
+    .cta-s {
+      background: var(--off);
+      padding: 160px 60px; text-align: center;
     }
-    .cta-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(184,150,90,0.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .cta-kicker { justify-content: center; }
-    .cta-kicker .kicker-line { display: none; }
+    .cta-s .eyebrow { text-align: center; }
     .cta-title {
       font-family: var(--serif);
-      font-size: clamp(44px, 7vw, 86px);
-      font-weight: 700; line-height: 1.05;
-      letter-spacing: -0.02em; color: var(--white);
-      margin: 20px auto 24px; max-width: 700px;
+      font-size: clamp(48px, 7.5vw, 100px);
+      font-weight: 700; line-height: 1.0;
+      letter-spacing: -0.02em; color: var(--ink);
+      margin: 16px auto 28px; max-width: 820px;
     }
     .cta-title em { font-style: italic; color: var(--gold); }
-    .cta-body {
-      font-size: 15px; font-weight: 300; line-height: 1.85;
-      color: rgba(255,255,255,0.38);
-      max-width: 420px; margin: 0 auto 52px;
+    .cta-sub {
+      font-size: 15px; font-weight: 300; line-height: 1.8;
+      color: var(--muted); max-width: 380px;
+      margin: 0 auto 52px;
     }
-    .cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-    .btn-primary-inv {
-      background: var(--gold); color: var(--white);
-      border: 1px solid var(--gold);
-    }
-    .btn-primary-inv:hover {
-      background: var(--gold-lt); border-color: var(--gold-lt);
-    }
-    .btn-outline-inv {
-      background: transparent; color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.14);
-    }
-    .btn-outline-inv:hover {
-      color: var(--white); border-color: rgba(255,255,255,0.35);
-    }
+    .cta-btns { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 
-    /* ─────────── FOOTER ─────────── */
+    /* ── FOOTER ── */
     footer {
-      padding: 32px 52px;
+      padding: 28px 60px;
       display: flex; justify-content: space-between; align-items: center;
       border-top: 1px solid var(--border);
       background: var(--white);
     }
-    .footer-logo {
-      font-family: var(--serif);
-      font-size: 16px; font-weight: 900; color: var(--ink);
+    .f-logo {
+      font-family: var(--serif); font-size: 18px; font-weight: 700;
+      color: var(--ink);
     }
-    .footer-logo span { color: var(--gold); }
-    .footer-copy { font-size: 12px; font-weight: 300; color: var(--muted); }
-    .footer-ig a {
-      font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
-      color: var(--muted); text-decoration: none;
-      transition: color .2s;
+    .f-logo i { color: var(--gold); font-style: normal; }
+    .f-copy { font-size: 11px; font-weight: 300; color: var(--muted); }
+    .f-ig a {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      color: var(--muted); text-decoration: none; transition: color .2s;
     }
-    .footer-ig a:hover { color: var(--ink); }
+    .f-ig a:hover { color: var(--ink); }
 
-    /* ─────────── FADE ─────────── */
-    .fade {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity .7s ease, transform .7s ease;
+    /* ── FADE ── */
+    .f-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
     }
-    .fade.visible { opacity: 1; transform: none; }
-    .fade.d1 { transition-delay: .1s; }
-    .fade.d2 { transition-delay: .2s; }
-    .fade.d3 { transition-delay: .3s; }
-    .fade.d4 { transition-delay: .4s; }
+    .f-in.show { opacity: 1; transform: none; }
+    .f-in.d1 { transition-delay: .08s; }
+    .f-in.d2 { transition-delay: .16s; }
+    .f-in.d3 { transition-delay: .24s; }
+    .f-in.d4 { transition-delay: .32s; }
 
-    /* ─────────── RESPONSIVE ─────────── */
-    @media (max-width: 960px) {
-      nav { grid-template-columns: auto 1fr; padding: 0 24px; }
-      .nav-left { display: none; }
-      .nav-logo { text-align: left; }
-      .nav-right-links { gap: 16px; }
-      .nav-right-links a:not(:last-child) { display: none; }
-      .hero, .section { padding-left: 24px; padding-right: 24px; }
-      .about-grid, .why-grid { grid-template-columns: 1fr; gap: 52px; }
-      .services-grid, .process-grid { grid-template-columns: 1fr; }
-      .svc, .step { border-right: none; border-bottom: 1px solid var(--border); }
-      .services-header { flex-direction: column; align-items: flex-start; }
-      .hero-bar { gap: 32px; flex-wrap: wrap; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
-      .cta-section { padding: 100px 24px; }
-      .why-quote-card { position: static; }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links a:not(:last-child):not(:nth-last-child(2)) { display: none; }
+      .hero { padding: 140px 24px 80px; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .s { padding: 80px 24px; }
+      .about-layout, .why-layout { grid-template-columns: 1fr; gap: 52px; }
+      .about-right, .why-right { margin-top: 0; }
+      .svc-grid { grid-template-columns: 1fr; gap: 2px; }
+      .services-top { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .step { border-right: none; border-bottom: 1px solid var(--border); }
+      .step:nth-child(2) { border-right: none; }
+      .step-arr { display: none; }
+      .cta-s { padding: 100px 24px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .process-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: clamp(56px, 16vw, 100px); }
     }
   </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav id="nav">
-  <div class="nav-left">
-    <a href="#about"    data-i18n="nav.about">About</a>
-    <a href="#services" data-i18n="nav.services">Services</a>
-  </div>
-  <a href="#" class="nav-logo">HIVE<span>.</span></a>
-  <div class="nav-right-links">
-    <a href="#why"     data-i18n="nav.why">Why HIVE</a>
-    <a href="#contact" data-i18n="nav.contact">Contact</a>
-    <div class="lang-switch">
+  <a href="#" class="nav-logo">HIVE<i>.</i></a>
+  <div class="nav-links">
+    <a href="#about"    data-i18n="n.about">About</a>
+    <a href="#services" data-i18n="n.services">Services</a>
+    <a href="#why"      data-i18n="n.why">Why HIVE</a>
+    <a href="#contact"  data-i18n="n.contact">Contact</a>
+    <div class="lang-pill">
       <button class="lang-btn active" data-lang="en">EN</button>
       <button class="lang-btn"        data-lang="ko">한국어</button>
     </div>
   </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-kicker fade">
-      <div class="hero-kicker-line"></div>
-      <span data-i18n="hero.kicker">Seoul-Based Creative Collective</span>
-    </div>
+  <div class="hero-label f-in">
+    <span data-i18n="h.label">Seoul · Korea</span>
+  </div>
 
-    <h1 class="hero-title fade d1">
-      <span data-i18n="hero.t1">Where Korean</span><br>
-      <em data-i18n="hero.t2">Culture Meets</em><br>
-      <span data-i18n="hero.t3">Your Brand.</span>
-    </h1>
+  <h1 class="hero-title f-in d1">
+    <span data-i18n="h.t1">Korean</span><br>
+    <em data-i18n="h.t2">Culture.</em><br>
+    <span data-i18n="h.t3">Global Brands.</span>
+  </h1>
 
-    <p class="hero-body fade d2" data-i18n="hero.body">
-      HIVE Studio bridges Southeast Asian brands with Korea's most dynamic creative crew — producing content that feels real, moves audiences, and drives results.
+  <div class="hero-bottom">
+    <p class="hero-sub f-in d2" data-i18n="h.sub">
+      We connect Southeast Asian brands with Korea's most dynamic creative crew.
     </p>
-
-    <div class="hero-cta fade d3">
-      <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-primary" data-i18n="hero.btn1">Enquire Now</a>
-      <a href="#about" class="btn btn-secondary" data-i18n="hero.btn2">Discover More</a>
-    </div>
-  </div>
-
-  <div class="hero-bar fade d4">
-    <div class="hero-stat">
-      <div class="hero-stat-n">10K<em>+</em></div>
-      <div class="hero-stat-l" data-i18n="hs.followers">Followers</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-n" data-i18n="hs.market">SEA</div>
-      <div class="hero-stat-l" data-i18n="hs.market-l">Target Market</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-n">3</div>
-      <div class="hero-stat-l" data-i18n="hs.services">Core Services</div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-stat">
-      <div class="hero-stat-n" data-i18n="hs.base">Seoul, KR</div>
-      <div class="hero-stat-l" data-i18n="hs.base-l">Headquartered</div>
+    <div class="hero-actions f-in d3">
+      <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-dark" data-i18n="h.btn1">Enquire Now</a>
+      <a href="#about" class="btn btn-ghost" data-i18n="h.btn2">Learn More</a>
     </div>
   </div>
 </section>
 
-<!-- ── ABOUT ── -->
-<section class="section section-cream" id="about">
-  <div class="about-grid">
-    <div class="about-text">
-      <div class="kicker fade"><div class="kicker-line"></div><span data-i18n="ab.kicker">About HIVE</span></div>
-      <h2 class="title fade d1" data-i18n="ab.title">We don't follow<br>the culture.<br><em>We create it.</em></h2>
-      <p class="fade d2" data-i18n="ab.p1"><strong>HIVE Studio</strong> is a Seoul-based creative entertainment collective at the intersection of dance, music, and visual storytelling. What started as a crew became a creative agency with a global lens.</p>
-      <p class="fade d3" data-i18n="ab.p2">We exist to bridge the gap between <strong>Southeast Asian brands</strong> seeking cultural authenticity and <strong>Korean creators</strong> with the talent to deliver it. HIVE is the strategy, the production, and the connection — all in one.</p>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.1">Reels &amp; Story Campaigns</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.2">Brand Film Production</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.3">Pop-up Activations</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.4">Seoul Based</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.5">Southeast Asia Focused</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.6">Creative Entertainment Collective</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.1">Reels &amp; Story Campaigns</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.2">Brand Film Production</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.3">Pop-up Activations</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.4">Seoul Based</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.5">Southeast Asia Focused</span></span>
+    <span class="ticker-item"><span class="ticker-dot"></span><span data-i18n="tk.6">Creative Entertainment Collective</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="s s-white" id="about">
+  <div class="about-layout">
+    <div class="about-left">
+      <span class="eyebrow f-in" data-i18n="ab.ey">About</span>
+      <h2 class="h2 f-in d1" data-i18n="ab.title">We don't<br>follow culture.<br><em>We make it.</em></h2>
+      <p class="lead f-in d2" data-i18n="ab.lead">
+        HIVE Studio is Seoul's creative entertainment collective. We bridge Southeast Asian brands and Korean creators — producing work that resonates across borders.
+      </p>
+      <div class="about-pillars f-in d3">
+        <div class="pillar">
+          <span class="pillar-icon">🇰🇷</span>
+          <div>
+            <div class="pillar-name" data-i18n="p1.n">Rooted in Seoul</div>
+            <div class="pillar-desc" data-i18n="p1.d">Street culture, dance, music — deep in the DNA of Korean creativity.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🌏</span>
+          <div>
+            <div class="pillar-name" data-i18n="p2.n">Built for SEA</div>
+            <div class="pillar-desc" data-i18n="p2.d">We understand both markets. Singapore, Indonesia, Thailand, Vietnam — and beyond.</div>
+          </div>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">⚡</span>
+          <div>
+            <div class="pillar-name" data-i18n="p3.n">End-to-End</div>
+            <div class="pillar-desc" data-i18n="p3.d">Brief to delivery. HIVE handles the full creative process — no gaps, no guesswork.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="about-card fade d2">
-      <div class="ac-item">
-        <div class="ac-icon">🇰🇷</div>
-        <div>
-          <div class="ac-label" data-i18n="ac1.l">Rooted in Seoul</div>
-          <div class="ac-desc" data-i18n="ac1.d">Deep roots in Korean street culture, performance art, and digital media — giving your brand genuine credibility.</div>
-        </div>
+
+    <div class="about-right f-in d2">
+      <div class="stat-block">
+        <div class="stat-n">10K+</div>
+        <div class="stat-l" data-i18n="st.1">Instagram<br>Followers</div>
       </div>
-      <div class="ac-item">
-        <div class="ac-icon">🌏</div>
-        <div>
-          <div class="ac-label" data-i18n="ac2.l">Built for Southeast Asia</div>
-          <div class="ac-desc" data-i18n="ac2.d">We understand both sides of the equation — the cultural nuance of SEA markets and the creative power of Korea.</div>
-        </div>
+      <div class="stat-block gold-bg">
+        <div class="stat-n">SEA</div>
+        <div class="stat-l" data-i18n="st.2">Target<br>Market</div>
       </div>
-      <div class="ac-item">
-        <div class="ac-icon">⚡</div>
-        <div>
-          <div class="ac-label" data-i18n="ac3.l">Full-Service Execution</div>
-          <div class="ac-desc" data-i18n="ac3.d">From initial brief to final delivery, HIVE manages the entire creative process with precision and speed.</div>
-        </div>
+      <div class="stat-block">
+        <div class="stat-n">3</div>
+        <div class="stat-l" data-i18n="st.3">Core<br>Services</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-n">KR</div>
+        <div class="stat-l" data-i18n="st.4">Seoul<br>Headquartered</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── SERVICES ── -->
-<section class="section section-sand" id="services">
-  <div class="services-header">
+<!-- SERVICES -->
+<section class="s s-off" id="services">
+  <div class="services-top">
     <div>
-      <div class="kicker fade"><div class="kicker-line"></div><span data-i18n="sv.kicker">Services</span></div>
-      <h2 class="title fade d1" data-i18n="sv.title">What We<br>Deliver</h2>
+      <span class="eyebrow f-in" data-i18n="sv.ey">Services</span>
+      <h2 class="h2 f-in d1" data-i18n="sv.title">What We<br>Deliver</h2>
     </div>
-    <p class="body-text fade d2" data-i18n="sv.body">Three focused services, one unified creative vision. Each tailored to put your brand exactly where it needs to be.</p>
+    <p class="lead f-in d2" data-i18n="sv.lead">Three services. One creative vision.</p>
   </div>
-
-  <div class="services-grid fade d1">
-    <div class="svc">
-      <span class="svc-num">01</span>
-      <span class="svc-icon">🎬</span>
-      <div class="svc-title" data-i18n="s1.t">Reels & Story<br>Campaigns</div>
-      <div class="svc-desc" data-i18n="s1.d">High-energy short-form content for Instagram and TikTok. Your brand integrated into lifestyle and performance content that feels native — not forced.</div>
+  <div class="svc-grid">
+    <div class="svc f-in">
+      <span class="svc-n">01</span>
+      <span class="svc-ico">🎬</span>
+      <div class="svc-title" data-i18n="s1.t">Reels &<br>Story Campaigns</div>
+      <div class="svc-body" data-i18n="s1.b">Short-form content for Instagram and TikTok. Your brand — embedded naturally into performance culture.</div>
     </div>
-    <div class="svc">
-      <span class="svc-num">02</span>
-      <span class="svc-icon">🎥</span>
+    <div class="svc f-in d1">
+      <span class="svc-n">02</span>
+      <span class="svc-ico">🎥</span>
       <div class="svc-title" data-i18n="s2.t">Brand Film<br>Production</div>
-      <div class="svc-desc" data-i18n="s2.d">Cinematic brand films with HIVE's performers at the centre. Built for campaigns that demand visual impact and lasting impression.</div>
+      <div class="svc-body" data-i18n="s2.b">Cinematic films. HIVE performers front and centre. Built for campaigns that demand impact.</div>
     </div>
-    <div class="svc">
-      <span class="svc-num">03</span>
-      <span class="svc-icon">🏙️</span>
-      <div class="svc-title" data-i18n="s3.t">Pop-up & Live<br>Activation</div>
-      <div class="svc-desc" data-i18n="s3.d">Live performances, pop-up events and brand activations staged in Korea. Generate real-world buzz with immersive brand experiences.</div>
+    <div class="svc f-in d2">
+      <span class="svc-n">03</span>
+      <span class="svc-ico">🏙️</span>
+      <div class="svc-title" data-i18n="s3.t">Pop-up &<br>Live Activation</div>
+      <div class="svc-body" data-i18n="s3.b">Live events and brand activations in Korea. On-the-ground moments that travel online.</div>
     </div>
   </div>
 </section>
 
-<!-- ── WHY HIVE ── -->
-<section class="section section-ink" id="why">
-  <div class="why-grid">
-    <div class="why-left">
-      <div class="kicker fade" style="--gold:#b8965a;">
-        <div class="kicker-line"></div>
-        <span data-i18n="wy.kicker">Why HIVE</span>
-      </div>
-      <h2 class="title white fade d1" data-i18n="wy.title">Why Southeast Asian<br>Brands <em>Choose Us</em></h2>
-      <ul class="why-items">
-        <li class="why-item fade d1">
+<!-- WHY HIVE -->
+<section class="s s-white" id="why">
+  <div class="why-layout">
+    <div>
+      <span class="eyebrow f-in" data-i18n="wy.ey">Why HIVE</span>
+      <h2 class="h2 f-in d1" data-i18n="wy.title">The Case<br>for <em>HIVE.</em></h2>
+      <div class="why-list">
+        <div class="why-row f-in d1">
           <span class="why-n">01</span>
           <div>
-            <div class="why-title" data-i18n="w1.t">Korean Wave Credibility</div>
-            <div class="why-desc" data-i18n="w1.d">K-culture sits at peak global influence. HIVE places your brand at its centre — authentically, not superficially.</div>
+            <div class="why-t" data-i18n="w1.t">Cultural Credibility</div>
+            <div class="why-d" data-i18n="w1.d">K-culture is at its global peak. Your brand inside it — not beside it.</div>
           </div>
-        </li>
-        <li class="why-item fade d2">
+        </div>
+        <div class="why-row f-in d2">
           <span class="why-n">02</span>
           <div>
-            <div class="why-title" data-i18n="w2.t">Authentic Over Advertised</div>
-            <div class="why-desc" data-i18n="w2.d">We embed your brand into real creative output. Audiences trust it because it doesn't feel like an ad.</div>
+            <div class="why-t" data-i18n="w2.t">Real, Not Staged</div>
+            <div class="why-d" data-i18n="w2.d">Content audiences trust because it doesn't feel like an ad.</div>
           </div>
-        </li>
-        <li class="why-item fade d3">
+        </div>
+        <div class="why-row f-in d3">
           <span class="why-n">03</span>
           <div>
-            <div class="why-title" data-i18n="w3.t">Seamless Cross-Border Bridge</div>
-            <div class="why-desc" data-i18n="w3.d">All coordination between your SEA team and our Seoul crew handled by HIVE. Zero friction.</div>
+            <div class="why-t" data-i18n="w3.t">Zero-Friction Bridge</div>
+            <div class="why-d" data-i18n="w3.d">All coordination between your SEA team and Seoul handled by HIVE.</div>
           </div>
-        </li>
-        <li class="why-item fade d4">
+        </div>
+        <div class="why-row f-in d4">
           <span class="why-n">04</span>
           <div>
-            <div class="why-title" data-i18n="w4.t">Fast. Precise. Reliable.</div>
-            <div class="why-desc" data-i18n="w4.d">Tight timelines, clear deliverables, no compromise on quality. That's the HIVE standard.</div>
+            <div class="why-t" data-i18n="w4.t">Fast. Precise. Reliable.</div>
+            <div class="why-d" data-i18n="w4.d">Tight timelines. Clear deliverables. No excuses.</div>
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
-    <div class="why-quote-card fade d2">
-      <span class="wqc-mark">"</span>
-      <p class="wqc-text" data-i18n="wy.quote">Korean content doesn't just reach audiences — it moves them. HIVE puts your brand inside that moment.</p>
-      <div class="wqc-stats">
-        <div class="wqs">
-          <div class="wqs-n">10K<em>+</em></div>
-          <div class="wqs-l" data-i18n="ws1">Instagram Reach</div>
-        </div>
-        <div class="wqs">
-          <div class="wqs-n">100<em>%</em></div>
-          <div class="wqs-l" data-i18n="ws2">Korean Authentic</div>
-        </div>
-        <div class="wqs">
-          <div class="wqs-n">3</div>
-          <div class="wqs-l" data-i18n="ws3">Service Formats</div>
-        </div>
-        <div class="wqs">
-          <div class="wqs-n">SEA</div>
-          <div class="wqs-l" data-i18n="ws4">↔ Korea Bridge</div>
+    <div class="why-right f-in d2">
+      <div class="quote-block">
+        <span class="q-mark">"</span>
+        <p class="q-text" data-i18n="wy.q">Korean content doesn't reach audiences. It moves them.</p>
+        <div class="q-stats">
+          <div class="qs">
+            <div class="qs-n">10K<em>+</em></div>
+            <div class="qs-l" data-i18n="qs1">Instagram</div>
+          </div>
+          <div class="qs">
+            <div class="qs-n">100<em>%</em></div>
+            <div class="qs-l" data-i18n="qs2">Authentic</div>
+          </div>
+          <div class="qs">
+            <div class="qs-n">3</div>
+            <div class="qs-l" data-i18n="qs3">Services</div>
+          </div>
+          <div class="qs">
+            <div class="qs-n">SEA<em>↔</em></div>
+            <div class="qs-l" data-i18n="qs4">KR Bridge</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── PROCESS ── -->
-<section class="section" id="process">
-  <div class="kicker fade"><div class="kicker-line"></div><span data-i18n="pr.kicker">How It Works</span></div>
-  <h2 class="title fade d1" data-i18n="pr.title">Four Steps.<br>One Seamless Experience.</h2>
-
+<!-- PROCESS -->
+<section class="s s-warm">
+  <span class="eyebrow f-in" data-i18n="pr.ey">Process</span>
+  <h2 class="h2 f-in d1" data-i18n="pr.title">How It Works</h2>
   <div class="process-grid">
-    <div class="step fade d1">
-      <div class="step-arrow">›</div>
+    <div class="step f-in d1">
+      <div class="step-arr">›</div>
       <span class="step-n">01</span>
-      <div class="step-title" data-i18n="p1.t">Initial Enquiry</div>
-      <div class="step-desc" data-i18n="p1.d">Reach out via Instagram DM. Share your brand, your goals, and what you're looking to achieve.</div>
+      <div class="step-t" data-i18n="st1.t">Enquire</div>
+      <div class="step-d" data-i18n="st1.d">DM us on Instagram. Tell us your brand and goals.</div>
     </div>
-    <div class="step fade d2">
-      <div class="step-arrow">›</div>
+    <div class="step f-in d2">
+      <div class="step-arr">›</div>
       <span class="step-n">02</span>
-      <div class="step-title" data-i18n="p2.t">Creative Brief</div>
-      <div class="step-desc" data-i18n="p2.d">Together we define scope, format, timeline and deliverables. Clarity from day one.</div>
+      <div class="step-t" data-i18n="st2.t">Brief</div>
+      <div class="step-d" data-i18n="st2.d">We define scope, format, and timeline together.</div>
     </div>
-    <div class="step fade d3">
-      <div class="step-arrow">›</div>
+    <div class="step f-in d3">
+      <div class="step-arr">›</div>
       <span class="step-n">03</span>
-      <div class="step-title" data-i18n="p3.t">Production in Seoul</div>
-      <div class="step-desc" data-i18n="p3.d">HIVE creates and shoots in Korea. Regular progress updates so you're never in the dark.</div>
+      <div class="step-t" data-i18n="st3.t">Produce</div>
+      <div class="step-d" data-i18n="st3.d">HIVE shoots and creates in Seoul. You get updates throughout.</div>
     </div>
-    <div class="step fade d4">
+    <div class="step f-in d4">
       <span class="step-n">04</span>
-      <div class="step-title" data-i18n="p4.t">Delivery & Go Live</div>
-      <div class="step-desc" data-i18n="p4.d">Final assets delivered and published. Your brand launches with Korea's creative energy behind it.</div>
+      <div class="step-t" data-i18n="st4.t">Launch</div>
+      <div class="step-d" data-i18n="st4.d">Final content delivered. Your brand goes live.</div>
     </div>
   </div>
 </section>
 
-<!-- ── CTA ── -->
-<section class="cta-section" id="contact">
-  <div class="kicker cta-kicker fade" style="justify-content:center;">
-    <div class="kicker-line" style="display:block;"></div>
-    <span data-i18n="ct.kicker">Work With Us</span>
-  </div>
-  <h2 class="cta-title fade d1">
-    <span data-i18n="ct.t1">Ready to bring your</span><br>
-    <em data-i18n="ct.t2">brand to Korea?</em>
+<!-- CTA -->
+<section class="cta-s" id="contact">
+  <span class="eyebrow f-in" data-i18n="ct.ey">Work With Us</span>
+  <h2 class="cta-title f-in d1">
+    <span data-i18n="ct.t1">Your brand</span><br>
+    <em data-i18n="ct.t2">belongs here.</em>
   </h2>
-  <p class="cta-body fade d2" data-i18n="ct.body">
-    Send us a DM on Instagram and let's start the conversation. No lengthy forms, no waiting — just a direct line to HIVE.
+  <p class="cta-sub f-in d2" data-i18n="ct.sub">
+    DM us on Instagram. No forms, no waiting — just a direct line to HIVE.
   </p>
-  <div class="cta-btns fade d3">
-    <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-primary-inv">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <div class="cta-btns f-in d3">
+    <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-dark">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5"/>
         <circle cx="12" cy="12" r="4"/>
         <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
       </svg>
       <span data-i18n="ct.btn1">DM on Instagram</span>
     </a>
-    <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-outline-inv" data-i18n="ct.btn2">View Our Content</a>
+    <a href="https://www.instagram.com/hivecrew.official/" target="_blank" class="btn btn-ghost" data-i18n="ct.btn2">View Content</a>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">HIVE<span>.</span></div>
-  <div class="footer-copy">© 2024 HIVE Studio. All rights reserved.</div>
-  <div class="footer-ig"><a href="https://www.instagram.com/hivecrew.official/" target="_blank">@hivecrew.official</a></div>
+  <div class="f-logo">HIVE<i>.</i></div>
+  <div class="f-copy">© 2024 HIVE Studio. All rights reserved.</div>
+  <div class="f-ig"><a href="https://www.instagram.com/hivecrew.official/" target="_blank">@hivecrew.official</a></div>
 </footer>
 
 <script>
-/* ── i18n ── */
 const T = {
   en: {
-    "nav.about":"About","nav.services":"Services","nav.why":"Why HIVE","nav.contact":"Contact",
-    "hero.kicker":"Seoul-Based Creative Collective",
-    "hero.t1":"Where Korean","hero.t2":"Culture Meets","hero.t3":"Your Brand.",
-    "hero.body":"HIVE Studio bridges Southeast Asian brands with Korea's most dynamic creative crew — producing content that feels real, moves audiences, and drives results.",
-    "hero.btn1":"Enquire Now","hero.btn2":"Discover More",
-    "hs.followers":"Followers","hs.market":"SEA","hs.market-l":"Target Market","hs.services":"Core Services","hs.base":"Seoul, KR","hs.base-l":"Headquartered",
-    "ab.kicker":"About HIVE",
-    "ab.title":"We don't follow<br>the culture.<br><em>We create it.</em>",
-    "ab.p1":"<strong>HIVE Studio</strong> is a Seoul-based creative entertainment collective at the intersection of dance, music, and visual storytelling. What started as a crew became a creative agency with a global lens.",
-    "ab.p2":"We exist to bridge the gap between <strong>Southeast Asian brands</strong> seeking cultural authenticity and <strong>Korean creators</strong> with the talent to deliver it. HIVE is the strategy, the production, and the connection — all in one.",
-    "ac1.l":"Rooted in Seoul","ac1.d":"Deep roots in Korean street culture, performance art, and digital media — giving your brand genuine credibility.",
-    "ac2.l":"Built for Southeast Asia","ac2.d":"We understand both sides of the equation — the cultural nuance of SEA markets and the creative power of Korea.",
-    "ac3.l":"Full-Service Execution","ac3.d":"From initial brief to final delivery, HIVE manages the entire creative process with precision and speed.",
-    "sv.kicker":"Services","sv.title":"What We<br>Deliver","sv.body":"Three focused services, one unified creative vision. Each tailored to put your brand exactly where it needs to be.",
-    "s1.t":"Reels & Story<br>Campaigns","s1.d":"High-energy short-form content for Instagram and TikTok. Your brand integrated into lifestyle and performance content that feels native — not forced.",
-    "s2.t":"Brand Film<br>Production","s2.d":"Cinematic brand films with HIVE's performers at the centre. Built for campaigns that demand visual impact and lasting impression.",
-    "s3.t":"Pop-up & Live<br>Activation","s3.d":"Live performances, pop-up events and brand activations staged in Korea. Generate real-world buzz with immersive brand experiences.",
-    "wy.kicker":"Why HIVE","wy.title":"Why Southeast Asian<br>Brands <em>Choose Us</em>",
-    "w1.t":"Korean Wave Credibility","w1.d":"K-culture sits at peak global influence. HIVE places your brand at its centre — authentically, not superficially.",
-    "w2.t":"Authentic Over Advertised","w2.d":"We embed your brand into real creative output. Audiences trust it because it doesn't feel like an ad.",
-    "w3.t":"Seamless Cross-Border Bridge","w3.d":"All coordination between your SEA team and our Seoul crew handled by HIVE. Zero friction.",
-    "w4.t":"Fast. Precise. Reliable.","w4.d":"Tight timelines, clear deliverables, no compromise on quality. That's the HIVE standard.",
-    "wy.quote":"Korean content doesn't just reach audiences — it moves them. HIVE puts your brand inside that moment.",
-    "ws1":"Instagram Reach","ws2":"Korean Authentic","ws3":"Service Formats","ws4":"Korea Bridge",
-    "pr.kicker":"How It Works","pr.title":"Four Steps.<br>One Seamless Experience.",
-    "p1.t":"Initial Enquiry","p1.d":"Reach out via Instagram DM. Share your brand, your goals, and what you're looking to achieve.",
-    "p2.t":"Creative Brief","p2.d":"Together we define scope, format, timeline and deliverables. Clarity from day one.",
-    "p3.t":"Production in Seoul","p3.d":"HIVE creates and shoots in Korea. Regular progress updates so you're never in the dark.",
-    "p4.t":"Delivery & Go Live","p4.d":"Final assets delivered and published. Your brand launches with Korea's creative energy behind it.",
-    "ct.kicker":"Work With Us","ct.t1":"Ready to bring your","ct.t2":"brand to Korea?",
-    "ct.body":"Send us a DM on Instagram and let's start the conversation. No lengthy forms, no waiting — just a direct line to HIVE.",
-    "ct.btn1":"DM on Instagram","ct.btn2":"View Our Content"
+    "n.about":"About","n.services":"Services","n.why":"Why HIVE","n.contact":"Contact",
+    "h.label":"Seoul · Korea",
+    "h.t1":"Korean","h.t2":"Culture.","h.t3":"Global Brands.",
+    "h.sub":"We connect Southeast Asian brands with Korea's most dynamic creative crew.",
+    "h.btn1":"Enquire Now","h.btn2":"Learn More",
+    "tk.1":"Reels & Story Campaigns","tk.2":"Brand Film Production","tk.3":"Pop-up Activations",
+    "tk.4":"Seoul Based","tk.5":"Southeast Asia Focused","tk.6":"Creative Entertainment Collective",
+    "ab.ey":"About",
+    "ab.title":"We don't<br>follow culture.<br><em>We make it.</em>",
+    "ab.lead":"HIVE Studio is Seoul's creative entertainment collective. We bridge Southeast Asian brands and Korean creators — producing work that resonates across borders.",
+    "p1.n":"Rooted in Seoul","p1.d":"Street culture, dance, music — deep in the DNA of Korean creativity.",
+    "p2.n":"Built for SEA","p2.d":"We understand both markets. Singapore, Indonesia, Thailand, Vietnam — and beyond.",
+    "p3.n":"End-to-End","p3.d":"Brief to delivery. HIVE handles the full creative process — no gaps, no guesswork.",
+    "st.1":"Instagram<br>Followers","st.2":"Target<br>Market","st.3":"Core<br>Services","st.4":"Seoul<br>Headquartered",
+    "sv.ey":"Services","sv.title":"What We<br>Deliver","sv.lead":"Three services. One creative vision.",
+    "s1.t":"Reels &<br>Story Campaigns","s1.b":"Short-form content for Instagram and TikTok. Your brand — embedded naturally into performance culture.",
+    "s2.t":"Brand Film<br>Production","s2.b":"Cinematic films. HIVE performers front and centre. Built for campaigns that demand impact.",
+    "s3.t":"Pop-up &<br>Live Activation","s3.b":"Live events and brand activations in Korea. On-the-ground moments that travel online.",
+    "wy.ey":"Why HIVE","wy.title":"The Case<br>for <em>HIVE.</em>",
+    "w1.t":"Cultural Credibility","w1.d":"K-culture is at its global peak. Your brand inside it — not beside it.",
+    "w2.t":"Real, Not Staged","w2.d":"Content audiences trust because it doesn't feel like an ad.",
+    "w3.t":"Zero-Friction Bridge","w3.d":"All coordination between your SEA team and Seoul handled by HIVE.",
+    "w4.t":"Fast. Precise. Reliable.","w4.d":"Tight timelines. Clear deliverables. No excuses.",
+    "wy.q":"Korean content doesn't reach audiences. It moves them.",
+    "qs1":"Instagram","qs2":"Authentic","qs3":"Services","qs4":"KR Bridge",
+    "pr.ey":"Process","pr.title":"How It Works",
+    "st1.t":"Enquire","st1.d":"DM us on Instagram. Tell us your brand and goals.",
+    "st2.t":"Brief","st2.d":"We define scope, format, and timeline together.",
+    "st3.t":"Produce","st3.d":"HIVE shoots and creates in Seoul. You get updates throughout.",
+    "st4.t":"Launch","st4.d":"Final content delivered. Your brand goes live.",
+    "ct.ey":"Work With Us","ct.t1":"Your brand","ct.t2":"belongs here.",
+    "ct.sub":"DM us on Instagram. No forms, no waiting — just a direct line to HIVE.",
+    "ct.btn1":"DM on Instagram","ct.btn2":"View Content"
   },
   ko: {
-    "nav.about":"소개","nav.services":"서비스","nav.why":"왜 하이브","nav.contact":"문의",
-    "hero.kicker":"서울 기반 크리에이티브 크루",
-    "hero.t1":"한국 문화가","hero.t2":"만나는 곳,","hero.t3":"당신의 브랜드.",
-    "hero.body":"HIVE Studio는 동남아시아 브랜드와 한국 최고의 크리에이티브 크루를 연결합니다. 진정성 있고, 오디언스를 움직이며, 결과를 만드는 콘텐츠.",
-    "hero.btn1":"문의하기","hero.btn2":"더 알아보기",
-    "hs.followers":"팔로워","hs.market":"동남아","hs.market-l":"타겟 시장","hs.services":"핵심 서비스","hs.base":"서울, 한국","hs.base-l":"본사 위치",
-    "ab.kicker":"HIVE 소개",
+    "n.about":"소개","n.services":"서비스","n.why":"왜 하이브","n.contact":"문의",
+    "h.label":"서울 · 한국",
+    "h.t1":"한국","h.t2":"문화.","h.t3":"글로벌 브랜드.",
+    "h.sub":"동남아시아 브랜드와 한국 최고의 크리에이티브 크루를 연결합니다.",
+    "h.btn1":"문의하기","h.btn2":"더 알아보기",
+    "tk.1":"릴스 & 스토리 캠페인","tk.2":"브랜드 필름 제작","tk.3":"팝업 액티베이션",
+    "tk.4":"서울 기반","tk.5":"동남아시아 집중","tk.6":"크리에이티브 엔터테인먼트 크루",
+    "ab.ey":"소개",
     "ab.title":"우리는 문화를<br>따르지 않습니다.<br><em>우리가 만듭니다.</em>",
-    "ab.p1":"<strong>HIVE Studio</strong>는 댄스, 음악, 비주얼 스토리텔링의 교차점에서 탄생한 서울 기반 크리에이티브 엔터테인먼트 크루입니다. 하나의 크루로 시작해 글로벌 시각을 가진 크리에이티브 에이전시가 되었습니다.",
-    "ab.p2":"문화적 진정성을 원하는 <strong>동남아시아 브랜드</strong>와 그것을 실현할 재능을 가진 <strong>한국 크리에이터</strong> 사이의 간극을 메웁니다. HIVE는 전략, 제작, 그리고 연결 — 이 모든 것을 하나로.",
-    "ac1.l":"서울에 뿌리를 두다","ac1.d":"한국 스트리트 문화, 퍼포먼스 아트, 디지털 미디어에 깊이 뿌리내린 크루 — 브랜드에 진정한 신뢰도를 부여합니다.",
-    "ac2.l":"동남아시아를 위해 만들어지다","ac2.d":"SEA 시장의 문화적 뉘앙스와 한국의 크리에이티브 파워, 양쪽 모두를 이해합니다.",
-    "ac3.l":"엔드투엔드 실행","ac3.d":"초기 브리핑부터 최종 납품까지, HIVE가 전체 크리에이티브 프로세스를 정밀하고 빠르게 관리합니다.",
-    "sv.kicker":"서비스","sv.title":"우리가<br>제공하는 것","sv.body":"하나의 통합된 크리에이티브 비전으로 구성된 세 가지 서비스. 브랜드가 있어야 할 곳에 정확히 위치시킵니다.",
-    "s1.t":"릴스 &<br>스토리 캠페인","s1.d":"인스타그램과 틱톡을 위한 고에너지 숏폼 콘텐츠. 광고처럼 보이지 않고 자연스럽게 라이프스타일과 퍼포먼스 콘텐츠 안에 브랜드를 녹여냅니다.",
-    "s2.t":"브랜드 필름<br>제작","s2.d":"HIVE 퍼포머들이 중심이 되는 시네마틱 브랜드 필름. 강렬한 비주얼 임팩트와 지속적인 인상이 필요한 캠페인에 최적화.",
-    "s3.t":"팝업 &<br>라이브 액티베이션","s3.d":"한국에서 진행되는 라이브 퍼포먼스, 팝업 이벤트, 브랜드 액티베이션. 온·오프라인을 가로질러 실질적인 화제를 만들어냅니다.",
-    "wy.kicker":"왜 하이브","wy.title":"동남아 브랜드가<br><em>HIVE를 선택하는 이유</em>",
-    "w1.t":"K-문화의 신뢰도","w1.d":"K-컬처는 지금 글로벌 영향력의 정점에 있습니다. HIVE는 브랜드를 그 중심에 — 진정성 있게 — 위치시킵니다.",
-    "w2.t":"광고가 아닌 진정성","w2.d":"실제 크리에이티브 결과물에 브랜드를 녹여냅니다. 광고처럼 느껴지지 않기 때문에 오디언스가 신뢰합니다.",
-    "w3.t":"매끄러운 국경 간 브릿지","w3.d":"SEA 팀과 서울 크루 사이의 모든 조율을 HIVE가 처리합니다. 마찰 없이.",
-    "w4.t":"빠르고. 정밀하고. 신뢰할 수 있는.","w4.d":"촘촘한 타임라인, 명확한 결과물, 품질 타협 없음. 이것이 HIVE의 기준입니다.",
-    "wy.quote":"한국 콘텐츠는 단순히 오디언스에게 닿는 것이 아니라 — 움직이게 만듭니다. HIVE는 브랜드를 그 순간 안에 넣습니다.",
-    "ws1":"인스타그램 도달","ws2":"한국 정통성","ws3":"서비스 포맷","ws4":"코리아 브릿지",
-    "pr.kicker":"진행 방식","pr.title":"네 단계.<br>하나의 완벽한 경험.",
-    "p1.t":"초기 문의","p1.d":"인스타그램 DM으로 연락주세요. 브랜드, 목표, 원하는 것을 공유해주세요.",
-    "p2.t":"크리에이티브 브리핑","p2.d":"범위, 포맷, 타임라인, 결과물을 함께 정의합니다. 첫날부터 명확하게.",
-    "p3.t":"서울에서의 제작","p3.d":"HIVE가 한국에서 제작합니다. 정기적인 진행 업데이트로 항상 파악할 수 있습니다.",
-    "p4.t":"납품 & 론칭","p4.d":"최종 결과물 납품 및 게시. 한국의 크리에이티브 에너지와 함께 브랜드가 라이브됩니다.",
-    "ct.kicker":"함께 일하기","ct.t1":"브랜드를 한국으로","ct.t2":"가져올 준비가 됐나요?",
-    "ct.body":"인스타그램으로 DM 주세요. 긴 양식도, 기다림도 없습니다 — HIVE와의 직접적인 연결.",
+    "ab.lead":"HIVE Studio는 서울의 크리에이티브 엔터테인먼트 크루입니다. 동남아시아 브랜드와 한국 크리에이터를 연결해 국경을 넘어 공감되는 콘텐츠를 만듭니다.",
+    "p1.n":"서울에 뿌리를","p1.d":"스트리트 문화, 댄스, 음악 — 한국 창의성의 DNA.",
+    "p2.n":"SEA를 위해","p2.d":"양쪽 시장을 이해합니다. 싱가포르, 인도네시아, 태국, 베트남, 그 너머까지.",
+    "p3.n":"처음부터 끝까지","p3.d":"브리핑부터 납품까지. 빈틈도, 추측도 없이 HIVE가 전 과정을 관리합니다.",
+    "st.1":"인스타그램<br>팔로워","st.2":"타겟<br>시장","st.3":"핵심<br>서비스","st.4":"서울<br>본사",
+    "sv.ey":"서비스","sv.title":"우리가<br>제공하는 것","sv.lead":"세 가지 서비스. 하나의 크리에이티브 비전.",
+    "s1.t":"릴스 &<br>스토리 캠페인","s1.b":"인스타그램과 틱톡을 위한 숏폼 콘텐츠. 퍼포먼스 문화 속에 자연스럽게 녹아드는 브랜드.",
+    "s2.t":"브랜드 필름<br>제작","s2.b":"시네마틱 필름. HIVE 퍼포머가 중심. 임팩트가 필요한 캠페인에 최적화.",
+    "s3.t":"팝업 &<br>라이브 액티베이션","s3.b":"한국에서의 라이브 이벤트와 브랜드 액티베이션. 오프라인 순간이 온라인으로 퍼집니다.",
+    "wy.ey":"왜 하이브","wy.title":"HIVE를<br><em>선택해야 하는 이유</em>",
+    "w1.t":"문화적 신뢰도","w1.d":"K-컬처는 글로벌 정점에 있습니다. 브랜드를 그 옆이 아닌 그 안에.",
+    "w2.t":"진짜, 연출 아닌","w2.d":"광고처럼 보이지 않기 때문에 오디언스가 신뢰하는 콘텐츠.",
+    "w3.t":"마찰 없는 브릿지","w3.d":"SEA 팀과 서울 크루 사이의 모든 조율을 HIVE가 담당합니다.",
+    "w4.t":"빠르고. 정밀하고. 확실하게.","w4.d":"촘촘한 타임라인. 명확한 결과물. 변명 없음.",
+    "wy.q":"한국 콘텐츠는 오디언스에게 닿는 게 아닙니다. 움직이게 만듭니다.",
+    "qs1":"인스타그램","qs2":"정통성","qs3":"서비스","qs4":"KR 브릿지",
+    "pr.ey":"진행 방식","pr.title":"어떻게 진행되나요",
+    "st1.t":"문의","st1.d":"인스타그램으로 DM. 브랜드와 목표를 알려주세요.",
+    "st2.t":"브리핑","st2.d":"범위, 포맷, 타임라인을 함께 정의합니다.",
+    "st3.t":"제작","st3.d":"HIVE가 서울에서 촬영하고 제작합니다. 과정 내내 업데이트.",
+    "st4.t":"론칭","st4.d":"최종 콘텐츠 납품. 브랜드가 라이브됩니다.",
+    "ct.ey":"함께 일하기","ct.t1":"당신의 브랜드가","ct.t2":"있어야 할 곳.",
+    "ct.sub":"인스타그램으로 DM 주세요. 양식도, 기다림도 없습니다.",
     "ct.btn1":"인스타그램 DM","ct.btn2":"콘텐츠 보기"
   }
 };
@@ -851,16 +774,14 @@ function setLang(l) {
 }
 document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 
-/* ── Scroll nav ── */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 30), { passive: true });
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 24), { passive: true });
 
-/* ── Fade in ── */
-const io = new IntersectionObserver(entries =>
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-  { threshold: 0.07 }
+const io = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); }),
+  { threshold: 0.06 }
 );
-document.querySelectorAll('.fade').forEach(el => io.observe(el));
+document.querySelectorAll('.f-in').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
