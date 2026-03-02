@@ -95,7 +95,7 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(52px, 8vw, 112px);
+      font-size: clamp(52px, 8vw, 112px); /* [변경] 히어로 타이틀 크기 축소: 원래 clamp(68px, 10.5vw, 148px) — 너무 커서 줄임 */
       font-weight: 700; line-height: 0.92;
       letter-spacing: -0.015em; color: var(--ink);
       margin-bottom: 52px;
@@ -108,7 +108,7 @@
     }
     .hero-sub {
       font-size: 16px; font-weight: 300; line-height: 1.8;
-      color: var(--muted); white-space: nowrap;
+      color: var(--muted); white-space: nowrap; /* [변경] 한 줄 고정: 원래 max-width: 380px이라 줄바꿈 발생 */
     }
     .hero-actions { display: flex; gap: 12px; flex-shrink: 0; }
 

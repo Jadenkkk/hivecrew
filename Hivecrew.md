@@ -25,10 +25,18 @@ Single file: `index.html` contains all HTML, CSS, and JavaScript with no build s
 python3 -m http.server 3000
 
 # Deploy (commit + push triggers Vercel auto-deploy)
-git add .
+git add index.html
 git commit -m "description"
 git push
 ```
+
+## Workflow Guidelines (Claude Code)
+
+After every code change:
+1. **Always show the local preview link**: `http://localhost:3000`
+2. **Always commit and push** when the user confirms — Vercel auto-deploys on push to `main`
+3. **Live site**: https://hivecrew.vercel.app
+4. **Always add CSS/HTML comments** explaining what was changed and why — e.g. `/* [변경] hero title 크기 축소: 68px→52px, 사용자 요청 */`
 
 ## Design Tokens
 
