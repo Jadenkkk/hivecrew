@@ -19,26 +19,36 @@ HIVE — 서울 기반 헬스/피트니스/웰니스 인플루언서 에이전�
   - `.show`는 뷰포트 진입 시 추가, 벗어날 때 제거 → 재스크롤 시 재실행
 - **배포:** Vercel (main 브랜치 push 시 자동 배포)
 
+## 컴포넌트 구조
+
+React의 핵심 장점: 페이지를 독립적인 컴포넌트로 분리 → 수정이 국소적, 재사용 가능, 병렬 작업 가능.
+
+```
+App.jsx  ← 전체를 조립하는 루트 (인트로 상태, IntersectionObserver 관리)
+├── Intro.jsx        인트로 스플래시 (로고 등장 → 페이드아웃, 한 번만 재생)
+├── Nav.jsx          고정 네비 (on-dark / scrolled 클래스, 스크롤 감지)
+├── Hero.jsx         "HIVE / Korea's No.1..." 풀스크린 다크 히어로
+├── Ticker.jsx       자동 스크롤 마키 띠
+├── Creators.jsx     인플루언서 카드 4장 (curtain-reveal + 호버 오버레이)
+├── About.jsx        소개 섹션 (필라 3개 + 스탯 블록)
+├── Services.jsx     서비스 카드 3개
+├── Portfolio.jsx    브랜드 캠페인 케이스 4개
+├── WhyHive.jsx      HIVE 선택 이유 + 인용구
+├── CTA.jsx          인스타그램 문의 CTA
+└── Footer.jsx       푸터
+```
+
+**나중에 서브페이지 추가 시 재사용 가능한 컴포넌트:** Nav.jsx, Footer.jsx, Ticker.jsx
+
 ## 파일 구조
 
 ```
 src/
-  components/
-    Intro.jsx      인트로 스플래시 (로고 등장 → 페이드아웃)
-    Nav.jsx        고정 네비 (on-dark / scrolled 클래스)
-    Hero.jsx       풀스크린 다크 히어로 (CSS keyframe 애니메이션)
-    Ticker.jsx     자동 스크롤 마키
-    Creators.jsx   인플루언서 쇼케이스 (curtain-reveal + 호버 오버레이)
-    About.jsx      헬스/웰니스 포커스 소개 섹션
-    Services.jsx   협찬 서비스 3종 카드
-    Portfolio.jsx  더미 브랜드 캠페인 케이스 4개
-    WhyHive.jsx    HIVE 선택 이유
-    CTA.jsx        인스타그램 문의 CTA
-    Footer.jsx     푸터
+  components/      위 컴포넌트 파일들
   assets/
     creator1.png ~ creator4.png   실제 인플루언서 사진 4장
   i18n.js          영어 텍스트 (T.en)
-  App.jsx          인트로 상태, IntersectionObserver, 섹션 렌더링 순서
+  App.jsx          루트 컴포넌트
   index.css        전체 스타일
   main.jsx
 index.html         Vite 진입점 (Google Fonts 포함)
