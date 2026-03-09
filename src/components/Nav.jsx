@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-// Nav — fixed top bar with scroll shadow effect and language switcher
-export default function Nav({ lang, setLang, t }) {
+// Nav — fixed top bar with scroll shadow effect and dark hero support
+// [변경] 언어 스위처 제거 — 영어 전용으로 단순화
+export default function Nav({ t }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -10,28 +11,17 @@ export default function Nav({ lang, setLang, t }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  // [변경] on-dark 클래스 상시 추가 — hero가 dark gradient이므로 항상 필요
+  // scrolled 상태에서는 on-dark.scrolled CSS가 light 스타일로 override함
   return (
-    <nav className={scrolled ? 'scrolled' : ''}>
+    <nav className={`on-dark${scrolled ? ' scrolled' : ''}`}>
       <a href="#" className="nav-logo">HIVE<i>.</i></a>
       <div className="nav-links">
         <a href="#about">{t['n.about']}</a>
+        <a href="#creators">{t['n.creators']}</a>
         <a href="#services">{t['n.services']}</a>
         <a href="#why">{t['n.why']}</a>
         <a href="#contact">{t['n.contact']}</a>
-        <div className="lang-pill">
-          <button
-            className={`lang-btn${lang === 'en' ? ' active' : ''}`}
-            onClick={() => setLang('en')}
-          >
-            EN
-          </button>
-          <button
-            className={`lang-btn${lang === 'ko' ? ' active' : ''}`}
-            onClick={() => setLang('ko')}
-          >
-            한국어
-          </button>
-        </div>
       </div>
     </nav>
   );

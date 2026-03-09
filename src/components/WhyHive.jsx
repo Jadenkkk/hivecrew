@@ -1,4 +1,5 @@
 // WhyHive — two-column section: numbered reasons left, quote block right
+// [변경] 콘텐츠 업데이트: health/wellness 브랜드 스폰서십 포커스로 4가지 이유 변경
 export default function WhyHive({ t }) {
   return (
     <section className="s s-white" id="why">
@@ -11,6 +12,7 @@ export default function WhyHive({ t }) {
             dangerouslySetInnerHTML={{ __html: t['wy.title'] }}
           />
           <div className="why-list">
+            {/* [변경] 이유 1: Authentic Lifestyle Fit */}
             <div className="why-row f-in d1">
               <span className="why-n">01</span>
               <div>
@@ -18,6 +20,7 @@ export default function WhyHive({ t }) {
                 <div className="why-d">{t['w1.d']}</div>
               </div>
             </div>
+            {/* [변경] 이유 2: SEA & China Market Expertise */}
             <div className="why-row f-in d2">
               <span className="why-n">02</span>
               <div>
@@ -25,6 +28,7 @@ export default function WhyHive({ t }) {
                 <div className="why-d">{t['w2.d']}</div>
               </div>
             </div>
+            {/* [변경] 이유 3: Creator × Brand Chemistry */}
             <div className="why-row f-in d3">
               <span className="why-n">03</span>
               <div>
@@ -32,6 +36,7 @@ export default function WhyHive({ t }) {
                 <div className="why-d">{t['w3.d']}</div>
               </div>
             </div>
+            {/* [변경] 이유 4: Zero-Hassle Campaigns */}
             <div className="why-row f-in d4">
               <span className="why-n">04</span>
               <div>
@@ -48,7 +53,7 @@ export default function WhyHive({ t }) {
             <p className="q-text">{t['wy.q']}</p>
             <div className="q-stats">
               <div className="qs">
-                <div className="qs-n">10K<em>+</em></div>
+                <div className="qs-n">10M<em>+</em></div>
                 <div className="qs-l">{t['qs1']}</div>
               </div>
               <div className="qs">
@@ -56,7 +61,7 @@ export default function WhyHive({ t }) {
                 <div className="qs-l">{t['qs2']}</div>
               </div>
               <div className="qs">
-                <div className="qs-n">3</div>
+                <div className="qs-n">50<em>+</em></div>
                 <div className="qs-l">{t['qs3']}</div>
               </div>
               <div className="qs">
