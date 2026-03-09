@@ -17,12 +17,11 @@ export const T = {
     "h.btn1": "Partner With Us",
     "h.btn2": "Meet Our Creators",
     // [변경] Ticker — health/wellness 키워드
-    "tk.1": "Influencer Campaigns",
+    "tk.1": "Korea's No.1 Fitness Collective",
     "tk.2": "Health & Wellness",
     "tk.3": "Brand Sponsorships",
     "tk.4": "Seoul Based",
-    "tk.5": "SEA & China Focused",
-    "tk.6": "Korea's Top Fitness Creators",
+    "tk.5": "APAC Focused",
     // [변경] About — health/wellness 에이전시 소개
     "ab.ey": "About",
     "ab.title": "We don't follow trends.<br><em>We set them.</em>",

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
 // Nav — fixed top bar with scroll shadow effect and dark hero support
-// [변경] 언어 스위처 제거 — 영어 전용으로 단순화
 export default function Nav({ t }) {
   const [scrolled, setScrolled] = useState(false);
 
