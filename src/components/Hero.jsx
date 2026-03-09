@@ -3,20 +3,14 @@
 export default function Hero({ t }) {
   return (
     <section className="hero">
-      {/* [변경] hero 요소들은 CSS keyframe으로 애니메이션 (f-in 미사용 — 인트로 이후 타이밍 맞춤) */}
-      <div className="hero-label">
-        <span>{t['h.label']}</span>
-      </div>
-
+      {/* [변경] label, sub 제거 — 타이틀과 버튼만 표시 */}
+      {/* [변경] h.t1이 빈 문자열이면 공백 없이 italic만 렌더링 */}
       <h1 className="hero-title">
-        {t['h.t1']} <em>{t['h.t2']}</em><br />
+        {t['h.t1'] ? `${t['h.t1']} ` : ''}<em>{t['h.t2']}</em><br />
         {t['h.t3']}
       </h1>
 
       <div className="hero-bottom">
-        <p className="hero-sub">
-          {t['h.sub']}
-        </p>
         <div className="hero-actions">
           {/* [변경] btn-gold: 파트너 문의 버튼 (gold 배경) */}
           <a

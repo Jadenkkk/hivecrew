@@ -112,10 +112,10 @@ nav.on-dark.scrolled .nav-links a:hover { color: var(--ink); }
   text-transform: uppercase; color: var(--gold);
 }
 
-/* [변경] hero-title: white 텍스트, 큰 사이즈, 슬라이드업 애니메이션 */
+/* [변경] hero-title: white 텍스트, 사이즈 30% 축소 */
 .hero-title {
   font-family: var(--serif);
-  font-size: clamp(56px, 9vw, 128px);
+  font-size: clamp(40px, 6.3vw, 90px);
   font-weight: 700; line-height: 0.9;
   letter-spacing: -0.015em; color: var(--white);
   margin-bottom: 48px;
@@ -639,7 +639,7 @@ footer {
 }
 @media (max-width: 560px) {
   .process-grid { grid-template-columns: 1fr; }
-  .hero-title { font-size: clamp(42px, 12vw, 76px); }
+  .hero-title { font-size: clamp(30px, 8.5vw, 54px); }
   /* [변경] 모바일 creators 단일 열, 오프셋 제거 */
   .creators-grid { grid-template-columns: 1fr; }
   .creator-card:nth-child(even) { margin-top: 0; }
