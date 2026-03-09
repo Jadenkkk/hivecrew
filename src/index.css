@@ -219,33 +219,83 @@ nav.on-dark.scrolled .nav-links a:hover { color: var(--ink); }
 }
 
 /* ── CREATORS ── */
-/* [변경] Sandbox 스타일로 재작성: 이미지 전면 + 호버 슬라이드업 오버레이 */
+/* [변경] Sandbox 스타일 curtain-reveal: 커튼 → 사진 드러남, 4열 지그재그 */
 .creators-top {
-  display: flex; flex-direction: column; margin-bottom: 52px;
+  display: flex; flex-direction: column; margin-bottom: 64px;
 }
 .creators-top .h2 { margin: 16px 0 20px; }
 .creators-top .lead { max-width: 480px; }
 
+/* [변경] 4열 그리드, align-items: start로 카드 높이 독립 */
 .creators-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  align-items: start;
 }
 
-.creator-card {
-  overflow: hidden;
-  cursor: pointer;
+/* [변경] 지그재그: 짝수 카드 아래로 오프셋 */
+.creator-card:nth-child(even) { margin-top: 80px; }
+
+/* [변경] creator card: f-in 기본 opacity/transform 비활성화 — curtain이 reveal 담당 */
+.creator-card.f-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
 
-/* 이미지 영역: 기본엔 배경만 — 높이를 크게 */
-.creator-img {
+.creator-card { cursor: pointer; }
+
+/* 이미지 래퍼: 커튼과 사진을 가두는 컨테이너 */
+.creator-img-wrap {
   position: relative;
-  height: 420px;
+  height: 540px;
   overflow: hidden;
 }
 
-/* 카테고리 뱃지: 항상 좌상단에 표시 */
+/* [변경] 커튼: 처음엔 카드 전체 덮음 (translateY 0), .show 시 위로 슬라이드 아웃 */
+.creator-curtain {
+  position: absolute; inset: 0; z-index: 10;
+  background: var(--ink); /* 기본값, nth-child로 각각 오버라이드 */
+  transform: translateY(0%);
+}
+/* [변경] 4개 카드 각기 다른 색 — 페이지 톤에서 추출 */
+.creators-grid .creator-card:nth-child(1) .creator-curtain { background: var(--ink); }
+.creators-grid .creator-card:nth-child(2) .creator-curtain { background: var(--gold); }
+.creators-grid .creator-card:nth-child(3) .creator-curtain { background: var(--muted); }
+.creators-grid .creator-card:nth-child(4) .creator-curtain { background: var(--warm); }
+
+/* 커튼 wipe-out keyframe */
+@keyframes curtainReveal {
+  from { transform: translateY(0%); }
+  to   { transform: translateY(-100%); }
+}
+
+/* [변경] .show 트리거: 커튼 슬라이드 아웃 + 순차 딜레이 */
+.creator-card.show .creator-curtain {
+  /* [변경] 커튼 속도 0.85s → 1.3s로 느리게 */
+  animation: curtainReveal 1.3s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+.creators-grid .creator-card:nth-child(1).show .creator-curtain { animation-delay: 0s; }
+.creators-grid .creator-card:nth-child(2).show .creator-curtain { animation-delay: 0.22s; }
+.creators-grid .creator-card:nth-child(3).show .creator-curtain { animation-delay: 0.44s; }
+.creators-grid .creator-card:nth-child(4).show .creator-curtain { animation-delay: 0.66s; }
+
+/* 배경 사진: 커튼 뒤에 있다가 드러남, 살짝 줌아웃 효과 */
+.creator-bg {
+  position: absolute; inset: 0;
+  transform: scale(1.06);
+  /* [변경] 줌아웃 속도도 함께 늦춤 */
+  transition: transform 1.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.creator-card.show .creator-bg { transform: scale(1); }
+.creators-grid .creator-card:nth-child(2) .creator-bg { transition-delay: 0.22s; }
+.creators-grid .creator-card:nth-child(3) .creator-bg { transition-delay: 0.44s; }
+.creators-grid .creator-card:nth-child(4) .creator-bg { transition-delay: 0.66s; }
+
+/* 카테고리 뱃지 */
 .creator-category {
-  position: absolute; top: 20px; left: 20px; z-index: 2;
+  position: absolute; top: 20px; left: 20px; z-index: 5;
   font-size: 9px; font-weight: 700; letter-spacing: 0.16em;
   text-transform: uppercase; color: var(--white);
   background: var(--gold); padding: 5px 12px;
@@ -253,14 +303,14 @@ nav.on-dark.scrolled .nav-links a:hover { color: var(--ink); }
 }
 .creator-card:hover .creator-category { opacity: 0; }
 
-/* 호버 오버레이: 기본엔 아래 숨김, 호버시 위로 슬라이드 */
+/* 호버 오버레이 */
 .creator-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
   background: var(--ink);
   padding: 28px 28px 32px;
   transform: translateY(100%);
   transition: transform .42s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 3;
+  z-index: 15;
 }
 .creator-card:hover .creator-overlay { transform: translateY(0); }
 
@@ -551,10 +601,11 @@ footer {
 
 /* ── FADE ── */
 /* [변경] 강화: translateY 거리 증가, 딜레이 세분화 */
+/* [변경] 페이드인 속도 0.75s → 1.0s로 느리게 */
 .f-in {
   opacity: 0; transform: translateY(32px);
-  transition: opacity .75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform .75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 1.0s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.0s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .f-in.show { opacity: 1; transform: none; }
 .f-in.d1 { transition-delay: .1s; }
@@ -581,14 +632,16 @@ footer {
   .cta-s { padding: 100px 24px; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
   /* [변경] 반응형 creators/portfolio 그리드 */
-  .creators-grid { grid-template-columns: 1fr 1fr; }
-  .creator-img { height: 320px; }
+  .creators-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .creator-card:nth-child(even) { margin-top: 60px; }
+  .creator-img { height: 380px; }
   .portfolio-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .process-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: clamp(42px, 12vw, 76px); }
-  /* [변경] 모바일 creators 단일 열 */
+  /* [변경] 모바일 creators 단일 열, 오프셋 제거 */
   .creators-grid { grid-template-columns: 1fr; }
-  .creator-img { height: 280px; }
+  .creator-card:nth-child(even) { margin-top: 0; }
+  .creator-img { height: 420px; }
 }

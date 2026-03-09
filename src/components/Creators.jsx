@@ -1,14 +1,16 @@
 // Creators — Sandbox-style creator showcase
-// [변경] 호버 오버레이 방식으로 재작성: 기본엔 이미지만, hover시 정보 슬라이드업
+// [변경] curtain-reveal: 커튼(검정 블록)이 위로 올라가며 사진 드러남 + 지그재그 순차 등장
 
-// [변경] 더미 사진: randomuser.me 포트레이트 이미지 사용 (헬스/피트니스 느낌의 인물 선택)
+import creator1 from '../assets/creator1.png';
+import creator2 from '../assets/creator2.png';
+import creator3 from '../assets/creator3.png';
+import creator4 from '../assets/creator4.png';
+
 const creators = [
-  { name: 'Kim Jisoo',    handle: '@jisoo.fit',       followers: '280K', engagement: '4.2%', category: 'Fitness',  photo: 'https://randomuser.me/api/portraits/women/44.jpg' },
-  { name: 'Park Minjun',  handle: '@minjun.wellness', followers: '195K', engagement: '5.1%', category: 'Wellness', photo: 'https://randomuser.me/api/portraits/men/32.jpg' },
-  { name: 'Lee Soyeon',   handle: '@soyeon.yoga',     followers: '340K', engagement: '3.8%', category: 'Yoga',     photo: 'https://randomuser.me/api/portraits/women/65.jpg' },
-  { name: 'Choi Hyunwoo', handle: '@hyunwoo.lift',    followers: '420K', engagement: '3.5%', category: 'Strength', photo: 'https://randomuser.me/api/portraits/men/75.jpg' },
-  { name: 'Jung Yuna',    handle: '@yuna.pilates',    followers: '165K', engagement: '6.2%', category: 'Pilates',  photo: 'https://randomuser.me/api/portraits/women/90.jpg' },
-  { name: 'Han Seungho',  handle: '@seungho.run',     followers: '210K', engagement: '4.7%', category: 'Running',  photo: 'https://randomuser.me/api/portraits/men/55.jpg' },
+  { name: 'Kim Sungmin',  handle: '@sungmin.fit',    followers: '420K', engagement: '3.9%', category: 'Fitness',  photo: creator1, pos: 'center top' },
+  { name: 'Park Jiyeon',  handle: '@jiyeon.strong',  followers: '340K', engagement: '4.8%', category: 'Strength', photo: creator2, pos: 'center center' },
+  { name: 'Lee Haerin',   handle: '@haerin.active',  followers: '280K', engagement: '5.6%', category: 'Sports',   photo: creator3, pos: 'center top' },
+  { name: 'Choi Woobin',  handle: '@woobin.lift',    followers: '510K', engagement: '3.5%', category: 'Fitness',  photo: creator4, pos: 'center top' },
 ];
 
 export default function Creators() {
@@ -23,13 +25,25 @@ export default function Creators() {
         </p>
       </div>
 
-      {/* [변경] 호버 오버레이 방식 카드: 기본엔 이미지 영역만 표시, 호버시 정보 슬라이드업 */}
+      {/* [변경] curtain-reveal 카드: 스크롤 시 검정 커튼이 위로 올라가며 사진 등장 */}
       <div className="creators-grid">
         {creators.map((c) => (
           <div className="creator-card f-in" key={c.handle}>
-            {/* [변경] 배경 이미지: randomuser.me 포트레이트 사진 */}
-            <div className="creator-img" style={{ backgroundImage: `url(${c.photo})`, backgroundSize: 'cover', backgroundPosition: 'center top' }}>
-              {/* 카테고리 뱃지 — 기본 표시 */}
+            <div className="creator-img-wrap">
+              {/* 커튼: 처음엔 카드 전체를 덮음 → .show 시 위로 슬라이드 아웃 */}
+              <div className="creator-curtain" />
+
+              {/* 배경 사진: 커튼이 올라가면 드러남 */}
+              <div
+                className="creator-bg"
+                style={{
+                  backgroundImage: `url(${c.photo})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: c.pos,
+                }}
+              />
+
+              {/* 카테고리 뱃지 */}
               <span className="creator-category">{c.category}</span>
 
               {/* 호버 오버레이 — 아래서 슬라이드업 */}

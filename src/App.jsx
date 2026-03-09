@@ -27,12 +27,17 @@ export default function App() {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  // IntersectionObserver — adds .show to .f-in elements when they enter viewport
+  // IntersectionObserver — adds/removes .show on scroll in/out for re-triggerable animations
   useEffect(() => {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add('show');
+          // [변경] 뷰포트 진입 시 .show 추가, 벗어날 때 제거 → 재스크롤 시 애니메이션 재실행
+          if (e.isIntersecting) {
+            e.target.classList.add('show');
+          } else {
+            e.target.classList.remove('show');
+          }
         });
       },
       { threshold: 0.06 }
