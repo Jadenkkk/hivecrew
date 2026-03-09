@@ -25,7 +25,7 @@ export const T = {
     // [변경] About — health/wellness 에이전시 소개
     "ab.ey": "About",
     "ab.title": "We don't follow trends.<br><em>We set them.</em>",
-    "ab.lead": "HIVE is Seoul's premier health & wellness influencer agency. We connect Korea's top fitness creators with Southeast Asian and Chinese brands — delivering authentic campaigns that move markets.",
+    "ab.lead": "HIVE is Seoul's premier health & wellness influencer agency.<br>We connect Korea's top fitness creators with global brands — delivering authentic campaigns that move markets.",
     // [변경] 필라: Fitness-First, Built for SEA & China, Full Service
     "p1.n": "Fitness-First",
     "p1.d": "From gym to trail to yoga studio — our creators live the lifestyle they promote.",

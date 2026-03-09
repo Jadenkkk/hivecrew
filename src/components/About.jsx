@@ -11,7 +11,8 @@ export default function About({ t }) {
             className="h2 f-in d1"
             dangerouslySetInnerHTML={{ __html: t['ab.title'] }}
           />
-          <p className="lead f-in d2">{t['ab.lead']}</p>
+          {/* [변경] dangerouslySetInnerHTML으로 변경 — ab.lead에 <br> 태그 지원 */}
+          <p className="lead f-in d2" dangerouslySetInnerHTML={{ __html: t['ab.lead'] }} />
           <div className="about-pillars f-in d3">
             {/* [변경] 필라 1: Fitness-First */}
             <div className="pillar">
