@@ -85,7 +85,30 @@ export const T = {
     "ct.t2": "belongs here.",
     "ct.sub": "DM us on Instagram. No forms, no waiting — just a direct line to HIVE.",
     "ct.btn1": "DM on Instagram",
-    "ct.btn2": "Meet Our Creators"
+    "ct.btn2": "Meet Our Creators",
+    // Creators 섹션
+    "cr.ey": "Our Creators",
+    "cr.title": "Korea's <em>Finest</em><br />Health Creators",
+    "cr.lead": "From yoga studios to lifting platforms — Korea's most trusted health and wellness voices.",
+    "cr.followers": "Followers",
+    "cr.engagement": "Engagement",
+    // 크리에이터 데이터
+    "cr1.name": "Kim Sungmin",  "cr1.handle": "@sungmin.fit",   "cr1.followers": "420K", "cr1.engagement": "3.9%", "cr1.category": "Fitness",
+    "cr2.name": "Park Jiyeon", "cr2.handle": "@jiyeon.strong", "cr2.followers": "340K", "cr2.engagement": "4.8%", "cr2.category": "Strength",
+    "cr3.name": "Lee Haerin",  "cr3.handle": "@haerin.active", "cr3.followers": "280K", "cr3.engagement": "5.6%", "cr3.category": "Sports",
+    "cr4.name": "Choi Woobin", "cr4.handle": "@woobin.lift",   "cr4.followers": "510K", "cr4.engagement": "3.5%", "cr4.category": "Fitness",
+    // Portfolio 섹션
+    "pf.ey": "Portfolio",
+    "pf.title": "Brand × <em>Creator</em><br />Campaigns",
+    "pf1.brand": "NutriPro SG",   "pf1.creator": "@jisoo.fit",     "pf1.type": "Protein Supplement", "pf1.result": "2.4M Impressions",
+    "pf2.brand": "ActiveWear TH", "pf2.creator": "@hyunwoo.lift",  "pf2.type": "Sportswear",         "pf2.result": "1.8M Impressions",
+    "pf3.brand": "ZenLife CN",    "pf3.creator": "@soyeon.yoga",   "pf3.type": "Wellness App",       "pf3.result": "3.1M Impressions",
+    "pf4.brand": "RunFast ID",    "pf4.creator": "@seungho.run",   "pf4.type": "Running Gear",       "pf4.result": "1.2M Impressions",
+    // About 스탯 숫자
+    "st.1n": "10M+", "st.2n": "SEA", "st.3n": "50+", "st.4n": "KR",
+    // Footer
+    "ft.copy": "© 2025 HIVE Studio. All rights reserved.",
+    "ft.ig": "@hivecrew.official"
   },
   ko: {
     "n.about": "소개",

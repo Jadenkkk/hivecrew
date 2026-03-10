@@ -58,15 +58,14 @@ export default function App() {
       <Nav t={t} />
       <Hero t={t} />
       <Ticker t={t} />
-      {/* [변경] Creators 추가 — 인플루언서 쇼케이스 */}
-      <Creators />
+      {/* [변경] Creators, Portfolio, Footer 모두 t prop 전달 — 텍스트 i18n 관리 */}
+      <Creators t={t} />
       <About t={t} />
       <Services t={t} />
-      {/* [변경] Portfolio 추가 — 브랜드 캠페인 케이스 */}
-      <Portfolio />
+      <Portfolio t={t} />
       <WhyHive t={t} />
       <CTA t={t} />
-      <Footer />
+      <Footer t={t} />
     </>
   );
 }

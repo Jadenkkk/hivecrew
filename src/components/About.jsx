@@ -43,20 +43,21 @@ export default function About({ t }) {
 
         <div className="about-right f-in d2">
           {/* [변경] 스탯 블록 레이블 업데이트: 크리에이터 리치 / SEA+CN / Active Creators / KR */}
+          {/* [변경] 스탯 숫자도 i18n.js에서 관리 (st.1n ~ st.4n) */}
           <div className="stat-block">
-            <div className="stat-n">10M+</div>
+            <div className="stat-n">{t['st.1n']}</div>
             <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.1'] }} />
           </div>
           <div className="stat-block gold-bg">
-            <div className="stat-n">SEA</div>
+            <div className="stat-n">{t['st.2n']}</div>
             <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.2'] }} />
           </div>
           <div className="stat-block">
-            <div className="stat-n">50+</div>
+            <div className="stat-n">{t['st.3n']}</div>
             <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.3'] }} />
           </div>
           <div className="stat-block">
-            <div className="stat-n">KR</div>
+            <div className="stat-n">{t['st.4n']}</div>
             <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.4'] }} />
           </div>
         </div>
