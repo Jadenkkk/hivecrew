@@ -3,7 +3,6 @@
 export default function Hero({ t }) {
   return (
     <section className="hero">
-      {/* [변경] label, sub 제거 — 타이틀과 버튼만 표시 */}
       {/* [변경] h.t1이 빈 문자열이면 공백 없이 italic만 렌더링 */}
       <h1 className="hero-title">
         {t['h.t1'] ? `${t['h.t1']} ` : ''}<em>{t['h.t2']}</em><br />
@@ -11,6 +10,8 @@ export default function Hero({ t }) {
       </h1>
 
       <div className="hero-bottom">
+        {/* [변경] h.sub: i18n에서 관리 — "" 이면 숨김, 텍스트 있으면 표시 */}
+        {t['h.sub'] && <p className="hero-sub">{t['h.sub']}</p>}
         <div className="hero-actions">
           {/* [변경] btn-gold: 파트너 문의 버튼 (gold 배경) */}
           <a
