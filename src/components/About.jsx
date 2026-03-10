@@ -1,65 +1,50 @@
-// About — two-column section: pillars on left, stat blocks on right
-// [변경] 콘텐츠 업데이트: health/fitness/wellness 포커스로 텍스트 변경
+// About → Business — sandbox 스타일 2패널 + 라인별 텍스트 슬라이드업 애니메이션
+// [변경] 배경 이미지 추가: biz1.png (Creator Partnership), biz2.png (Marketing Solutions)
+import biz1 from '../assets/biz1.png';
+import biz2 from '../assets/biz2.png';
+
 export default function About({ t }) {
   return (
-    <section className="s s-white" id="about">
-      <div className="about-layout">
-        <div className="about-left">
-          <span className="eyebrow f-in">{t['ab.ey']}</span>
-          {/* ab.title contains <br> and <em> tags — use dangerouslySetInnerHTML */}
-          <h2
-            className="h2 f-in d1"
-            dangerouslySetInnerHTML={{ __html: t['ab.title'] }}
-          />
-          {/* [변경] dangerouslySetInnerHTML으로 변경 — ab.lead에 <br> 태그 지원 */}
-          <p className="lead f-in d2" dangerouslySetInnerHTML={{ __html: t['ab.lead'] }} />
-          <div className="about-pillars f-in d3">
-            {/* [변경] 필라 1: Fitness-First */}
-            <div className="pillar">
-              <span className="pillar-icon">🏋️</span>
-              <div>
-                <div className="pillar-name">{t['p1.n']}</div>
-                <div className="pillar-desc">{t['p1.d']}</div>
-              </div>
-            </div>
-            {/* [변경] 필라 2: Built for SEA & China */}
-            <div className="pillar">
-              <span className="pillar-icon">🌏</span>
-              <div>
-                <div className="pillar-name">{t['p2.n']}</div>
-                <div className="pillar-desc">{t['p2.d']}</div>
-              </div>
-            </div>
-            {/* [변경] 필라 3: Full Service */}
-            <div className="pillar">
-              <span className="pillar-icon">⚡</span>
-              <div>
-                <div className="pillar-name">{t['p3.n']}</div>
-                <div className="pillar-desc">{t['p3.d']}</div>
-              </div>
-            </div>
-          </div>
+    <section className="biz-section" id="about">
+      {/* 섹션 eyebrow */}
+      <div className="biz-header f-in">
+        <span className="eyebrow">{t['biz.ey']}</span>
+      </div>
+
+      {/* 2패널 그리드 */}
+      <div className="biz-grid">
+        {/* 패널 01 — biz1.png 배경 */}
+        <div className="biz-panel f-in" style={{ backgroundImage: `url(${biz1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          {/* [변경] 타이틀 라인별 슬라이드업: wrap(overflow:hidden) > line(translateY) */}
+          <h2 className="biz-title">
+            {t['biz.1t'].split('\n').map((line, i) => (
+              <span key={i} className="biz-title-wrap">
+                <span className="biz-title-line" style={{ transitionDelay: `${0.1 + i * 0.12}s` }}>
+                  {line}
+                </span>
+              </span>
+            ))}
+          </h2>
+
+          {/* 설명 — 페이드업 딜레이 */}
+          <p className="biz-desc">{t['biz.1d']}</p>
+          <span className="biz-label">Creator Partnership</span>
         </div>
 
-        <div className="about-right f-in d2">
-          {/* [변경] 스탯 블록 레이블 업데이트: 크리에이터 리치 / SEA+CN / Active Creators / KR */}
-          {/* [변경] 스탯 숫자도 i18n.js에서 관리 (st.1n ~ st.4n) */}
-          <div className="stat-block">
-            <div className="stat-n">{t['st.1n']}</div>
-            <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.1'] }} />
-          </div>
-          <div className="stat-block gold-bg">
-            <div className="stat-n">{t['st.2n']}</div>
-            <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.2'] }} />
-          </div>
-          <div className="stat-block">
-            <div className="stat-n">{t['st.3n']}</div>
-            <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.3'] }} />
-          </div>
-          <div className="stat-block">
-            <div className="stat-n">{t['st.4n']}</div>
-            <div className="stat-l" dangerouslySetInnerHTML={{ __html: t['st.4'] }} />
-          </div>
+        {/* 패널 02 — biz2.png 배경 */}
+        <div className="biz-panel f-in" style={{ backgroundImage: `url(${biz2})`, backgroundSize: 'cover', backgroundPosition: 'center', '--panel-delay': '0.15s' }}>
+          <h2 className="biz-title">
+            {t['biz.2t'].split('\n').map((line, i) => (
+              <span key={i} className="biz-title-wrap">
+                <span className="biz-title-line" style={{ transitionDelay: `${0.25 + i * 0.12}s` }}>
+                  {line}
+                </span>
+              </span>
+            ))}
+          </h2>
+
+          <p className="biz-desc">{t['biz.2d']}</p>
+          <span className="biz-label">Marketing Solutions</span>
         </div>
       </div>
     </section>

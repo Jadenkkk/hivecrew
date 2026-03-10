@@ -206,12 +206,13 @@ nav.on-dark.scrolled .nav-links a:hover { color: var(--ink); }
 }
 
 .h2 {
-  font-family: var(--serif);
+  font-family: 'Poppins', var(--sans); /* [변경] Cormorant → Poppins (sandbox.co.kr 폰트) */
   font-size: clamp(36px, 4.5vw, 62px);
-  font-weight: 700; line-height: 1.05;
-  letter-spacing: -0.01em; color: var(--ink);
+  font-weight: 800; line-height: 1.0;
+  letter-spacing: -0.02em; color: var(--ink);
+  text-transform: uppercase; /* [변경] 모든 h2 대문자 처리 */
 }
-.h2 em { font-style: italic; color: var(--gold); }
+.h2 em { font-style: italic; color: var(--gold); margin-right: 0.18em; } /* [변경] uppercase 렌더링 시 em 뒤 공백 소실 방지 */
 
 .lead {
   font-size: 15px; font-weight: 300; line-height: 1.85;
@@ -339,55 +340,142 @@ nav.on-dark.scrolled .nav-links a:hover { color: var(--ink); }
   width: 1px; height: 32px; background: rgba(255,255,255,0.12);
 }
 
-/* ── ABOUT ── */
-.about-layout {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 100px; align-items: start;
+/* ── BUSINESS (구 About) — sandbox 스타일 2패널 ── */
+.biz-section {
+  padding: 0; /* 섹션 자체는 패딩 없이 풀폭 */
+  background: var(--ink);
 }
-.about-left .h2 { margin-bottom: 28px; }
-.about-left .lead { margin-bottom: 48px; }
-
-.about-pillars {
-  display: flex; flex-direction: column; gap: 0;
-  border-top: 1px solid var(--border);
+.biz-header {
+  padding: 60px 60px 40px;
 }
-.pillar {
-  display: grid; grid-template-columns: 36px 1fr;
-  gap: 20px; padding: 24px 0;
-  border-bottom: 1px solid var(--border);
-  align-items: start;
-}
-.pillar-icon { font-size: 18px; padding-top: 2px; }
-.pillar-name {
-  font-size: 13px; font-weight: 600; color: var(--ink);
-  margin-bottom: 5px; letter-spacing: 0.01em;
-}
-.pillar-desc {
-  font-size: 12.5px; font-weight: 300; line-height: 1.7; color: var(--muted);
+.biz-header .eyebrow {
+  color: rgba(255,255,255,0.45); /* 다크 배경 위 흰 eyebrow */
 }
 
-/* about right — big number block */
-.about-right {
-  display: flex; flex-direction: column; gap: 2px; margin-top: 84px;
+/* 2열 패널 그리드 */
+.biz-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-.stat-block {
-  background: var(--white);
-  border: 1px solid var(--border);
-  padding: 36px 40px;
-  display: flex; justify-content: space-between; align-items: center;
+
+/* [변경] biz-panel의 f-in 기본 페이드 무력화 — 자식 요소가 직접 애니메이션 */
+.biz-panel.f-in { opacity: 1; transform: none; transition: none; }
+
+/* 각 패널 — 다크, 풀사이즈 */
+.biz-panel {
+  position: relative;
+  min-height: 540px;
+  padding: 56px 56px 52px;
+  background: var(--ink);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  cursor: default;
+  transition: background 0.5s ease;
 }
-.stat-block.gold-bg { background: var(--gold); border-color: var(--gold); }
-.stat-n {
+/* 패널 사이 구분선 */
+.biz-panel:first-child {
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+/* [변경] 다크 오버레이 — 배경 사진 위 텍스트 가독성 확보 */
+.biz-panel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.58);
+  transition: background 0.5s ease;
+  z-index: 0;
+}
+/* [변경] hover glow 2배 강화 — 오버레이 많이 걷어내서 사진 밝게 */
+.biz-panel:hover::before {
+  background: rgba(0,0,0,0.20);
+}
+
+/* 고스트 번호 — 우상단 대형, 스케일인 애니메이션 */
+.biz-num {
+  position: absolute;
+  top: 40px; right: 48px;
   font-family: var(--serif);
-  font-size: 48px; font-weight: 700; line-height: 1;
-  color: var(--ink); letter-spacing: -0.02em;
+  font-size: clamp(100px, 14vw, 180px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  user-select: none;
+  /* [변경] 기본: 투명 + 크게 */
+  color: transparent;
+  transform: scale(1.15) translateY(-8px);
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+              color 1s ease;
 }
-.stat-block.gold-bg .stat-n { color: var(--white); }
-.stat-l {
-  font-size: 10.5px; font-weight: 500; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--muted); text-align: right;
+/* [변경] .show 시 스케일다운 + 고스트 컬러 */
+.biz-panel.show .biz-num {
+  color: rgba(255,255,255,0.07);
+  transform: scale(1) translateY(0);
 }
-.stat-block.gold-bg .stat-l { color: rgba(255,255,255,0.7); }
+.biz-panel:hover .biz-num {
+  color: rgba(255,255,255,0.12);
+}
+
+/* 메인 타이틀 래퍼 — overflow:hidden으로 슬라이드업 clip */
+.biz-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  position: relative; z-index: 1;
+}
+/* [변경] 각 라인 래퍼: overflow:hidden으로 슬라이드 클립 */
+.biz-title-wrap {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+/* [변경] 실제 텍스트: 기본 → 아래 숨겨짐 */
+.biz-title-line {
+  display: block;
+  transform: translateY(112%);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* [변경] .show 시 슬라이드업 */
+.biz-panel.show .biz-title-line {
+  transform: translateY(0);
+}
+
+/* 설명 텍스트 — 기본 숨김, .show 시 페이드업 */
+.biz-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.5);
+  max-width: 380px;
+  position: relative; z-index: 1;
+  /* [변경] 기본: 투명 + 살짝 아래 */
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+  transition-delay: 0.6s;
+}
+.biz-panel.show .biz-desc {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 수직 레이블 — 우측 하단 */
+.biz-label {
+  position: absolute;
+  bottom: 52px; right: 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+  padding-right: 20px;
+}
 
 /* ── SERVICES ── */
 .services-top {
@@ -621,8 +709,12 @@ footer {
   .hero { padding: 0 24px 60px; }
   .hero-bottom { flex-direction: column; align-items: flex-start; }
   .s { padding: 80px 24px; }
-  .about-layout, .why-layout { grid-template-columns: 1fr; gap: 52px; }
-  .about-right, .why-right { margin-top: 0; }
+  .biz-grid { grid-template-columns: 1fr; } /* [변경] 모바일: 1열 */
+  .biz-panel { min-height: 400px; padding: 40px 28px 40px; }
+  .biz-panel:first-child { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .biz-header { padding: 48px 28px 28px; }
+  .why-layout { grid-template-columns: 1fr; gap: 52px; }
+  .why-right { margin-top: 0; }
   .svc-grid { grid-template-columns: 1fr; gap: 2px; }
   .services-top { flex-direction: column; align-items: flex-start; gap: 16px; }
   .process-grid { grid-template-columns: 1fr 1fr; }

@@ -12,35 +12,38 @@ export const T = {
     "h.label": "Seoul · Korea · Health & Wellness",
     "h.t1": "",
     "h.t2": "HIVE",
-    "h.t3": "Korea's No.1 Fitness Collective.",
-    "h.sub": "The home of Korea's most influential health and wellness creators.",
+    "h.t3": "Korea's No.1 Fitness Influencer Collective.",
+    "h.sub": "",
     "h.btn1": "Partner With Us",
     "h.btn2": "Meet Our Creators",
+     // Creators 섹션
+    "cr.ey": "Our Creators",
+    "cr.title": "Korea's <em>Finest</em>  Health Influencers",
+    "cr.lead": "Korea's most trusted voices in health and fitness.",
+    "cr.followers": "Followers",
+    "cr.engagement": "Engagement",
     // [변경] Ticker — health/wellness 키워드
     "tk.1": "Korea's No.1 Fitness Collective",
     "tk.2": "Health & Wellness",
     "tk.3": "Brand Sponsorships",
     "tk.4": "Seoul Based",
     "tk.5": "APAC Focused",
-    // [변경] About — health/wellness 에이전시 소개
-    "ab.ey": "About",
-    "ab.title": "We don't follow trends.<br><em>We set them.</em>",
-    "ab.lead": "HIVE is Seoul's premier health & wellness influencer agency.<br>We connect Korea's top fitness creators with global brands — delivering authentic campaigns that move markets.",
-    // [변경] 필라: Fitness-First, Built for SEA & China, Full Service
-    "p1.n": "Fitness-First",
-    "p1.d": "From gym to trail to yoga studio — our creators live the lifestyle they promote.",
-    "p2.n": "Built for SEA & China",
-    "p2.d": "Deep market knowledge across Singapore, Indonesia, Thailand, Vietnam, and China.",
-    "p3.n": "Full Service",
-    "p3.d": "Creator matching, content production, and campaign management. All under one roof.",
-    // [변경] 스탯 레이블: Total Creator Reach, SEA + CN, Active Creators, KR
+    // Business 섹션 — 2개 비즈니스 영역
+    "biz.ey": "Business",
+    "biz.1num": "01",
+    "biz.1t": "Creator\nPartnership",
+    "biz.1d": "We connect brands with Korea's top fitness creators — matching by audience, values, and market fit for authentic campaigns that convert.",
+    "biz.2num": "02",
+    "biz.2t": "Marketing\nSolutions",
+    "biz.2d": "End-to-end campaign production. Reels, TikTok, Stories — shot in Seoul, designed for SEA & China markets.",
+    // 스탯 레이블 (About에서 이동)
     "st.1": "Total Creator<br>Reach",
     "st.2": "SEA +<br>CN",
     "st.3": "Active<br>Creators",
     "st.4": "Seoul<br>Headquartered",
     // [변경] Services — 브랜드 스폰서십 방향
     "sv.ey": "Services",
-    "sv.title": "What We<br>Deliver",
+    "sv.title": "What We Deliver",
     "sv.lead": "Three services. One mission — connecting brands with the right creators.",
     // [변경] 서비스 1: 인플루언서 매칭
     "s1.t": "Influencer<br>Matching",
@@ -86,12 +89,7 @@ export const T = {
     "ct.sub": "DM us on Instagram. No forms, no waiting — just a direct line to HIVE.",
     "ct.btn1": "DM on Instagram",
     "ct.btn2": "Meet Our Creators",
-    // Creators 섹션
-    "cr.ey": "Our Creators",
-    "cr.title": "Korea's <em>Finest</em><br />Health Creators",
-    "cr.lead": "From yoga studios to lifting platforms — Korea's most trusted health and wellness voices.",
-    "cr.followers": "Followers",
-    "cr.engagement": "Engagement",
+   
     // 크리에이터 데이터
     "cr1.name": "Kim Sungmin",  "cr1.handle": "@sungmin.fit",   "cr1.followers": "420K", "cr1.engagement": "3.9%", "cr1.category": "Fitness",
     "cr2.name": "Park Jiyeon", "cr2.handle": "@jiyeon.strong", "cr2.followers": "340K", "cr2.engagement": "4.8%", "cr2.category": "Strength",
